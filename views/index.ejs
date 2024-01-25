@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
+
+		<title>Extract Text From Image</title>
+	</head>
+	<body>
+		<nav>
+			<div class="title">
+				<!-- <h1>TextGleaner</h1> -->
+				<img
+					src="/public/assets/images/logo_temp_cropped3.png"
+					alt="ScanTextify: Extract Text From images"
+				/>
+			</div>
+			<div class="menu">
+				<ul class="menu_links">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Key Features</a></li>
+					<!-- <li><a href="#">Privacy Policy</a></li> -->
+					<!-- <li><a href="#">Pricing</a></li> -->
+					<li><a href="#">Contact Us</a></li>
+				</ul>
+			</div>
+			<div class="login_div">
+				<button class="login">
+					<a
+						id="Login_button"
+						target="_main"
+						href="/public/assets/login/index.html"
+						>Login</a
+					>
+				</button>
+			</div>
+		</nav>
+		<div class="hero">
+			<label for="input-file" id="drag-area">
+				<!-- <input
+					type="file"
+					accept="application/pdf,image/*"
+					id="input-file"
+					hidden
+				/> -->
+				<div id="image-view">
+					<img
+						src="/public/assets/images/upload-removebg-preview.png"
+						alt="upload"
+					/>
+					<p>Drag and Drop or Click here <br />To upload image</p>
+					<span>Upload ANY images from Desktop</span>
+				</div>
+			</label>
+			<!-- <input
+					type="file"
+					accept="application/pdf,image/*"
+					id="input-file"
+					hidden
+				/> --><!-- <input
+					type="file"
+					accept="application/pdf,image/*"
+					id="input-file"
+					hidden
+				/> -->
+			<form action="/upload" method="POST" enctype="multipart/form-data">
+				<input
+					type="file"
+					name="xyz"
+					accept="image/*"
+					id="input-file"
+					required
+					hidden
+				/>
+				<button type="submit">Convert</button>
+			</form>
+			<textarea readonly name="Output textarea" id="" cols="50" rows="10">
+				<%=data%>
+			</textarea
+			>
+		</div>
+		<script src="/public/assets/script.js"></script>
+	</body>
+</html>
