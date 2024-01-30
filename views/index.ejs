@@ -10,7 +10,6 @@
 	<body>
 		<nav>
 			<div class="title">
-				<!-- <h1>TextGleaner</h1> -->
 				<img
 					src="/public/assets/images/logo_temp_cropped3.png"
 					alt="ScanTextify: Extract Text From images"
@@ -21,8 +20,6 @@
 					<li><a href="#">Home</a></li>
 					<li><a href="#">About Us</a></li>
 					<li><a href="#">Key Features</a></li>
-					<!-- <li><a href="#">Privacy Policy</a></li> -->
-					<!-- <li><a href="#">Pricing</a></li> -->
 					<li><a href="#">Contact Us</a></li>
 				</ul>
 			</div>
@@ -39,12 +36,6 @@
 		</nav>
 		<div class="hero">
 			<label for="input-file" id="drag-area">
-				<!-- <input
-					type="file"
-					accept="application/pdf,image/*"
-					id="input-file"
-					hidden
-				/> -->
 				<div id="image-view">
 					<img
 						src="/public/assets/images/upload-removebg-preview.png"
@@ -54,17 +45,6 @@
 					<span>Upload ANY images from Desktop</span>
 				</div>
 			</label>
-			<!-- <input
-					type="file"
-					accept="application/pdf,image/*"
-					id="input-file"
-					hidden
-				/> --><!-- <input
-					type="file"
-					accept="application/pdf,image/*"
-					id="input-file"
-					hidden
-				/> -->
 			<form action="/upload" method="POST" enctype="multipart/form-data">
 				<input
 					type="file"
@@ -74,7 +54,7 @@
 					required
 					hidden
 				/>
-				<button type="submit">Convert</button>
+				<button id="convert" type="submit">Convert</button>
 			</form>
 			<textarea readonly name="Output textarea" id="" cols="50" rows="10">
 				<%=data%>

@@ -9,3 +9,12 @@ function uploadImage() {
 	imageView.style.backgroundImage = `url(${imgLink})`;
 	imageView.textContent = '';
 }
+
+dropArea.addEventListener('dragover', function (e) {
+	e.preventDefault();
+});
+dropArea.addEventListener('drop', function (e) {
+	e.preventDefault();
+	inputFile.files = e.dataTransfer.files;
+	uploadImage();
+});
