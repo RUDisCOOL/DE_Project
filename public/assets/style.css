@@ -5,7 +5,6 @@
 	padding: 0%;
 	box-sizing: border-box;
 	font-family: Poppins, sans-serif;
-	font-size: 20px;
 }
 nav {
 	display: flex;
@@ -13,34 +12,37 @@ nav {
 	align-items: center;
 	background: linear-gradient(to right, #0b415a, #89216b);
 }
-.title {
+.logo_class {
 	display: flex;
-	width: 200px;
+	margin: 5px;
 	align-items: center;
 	justify-content: center;
 }
-.title img {
+#logo {
 	width: 100%;
-	margin: 5px;
 }
 
 .menu {
-	width: 65%;
-}
-.menu_links {
 	display: flex;
-	letter-spacing: 1px;
-	gap: 40px;
-	justify-content: right;
+	flex-grow: 0.9;
+	min-width: 65%;
+	justify-content: flex-end;
+}
+#menu_links {
+	width: 500px;
+}
+#menu_links ul {
+	display: flex;
+	justify-content: space-evenly;
 	list-style: none;
 }
-.menu_links a {
+#menu_links a {
 	color: #ffffff;
 	position: relative;
 	font-weight: 600;
 	text-decoration: none;
 }
-.menu_links a:after {
+#menu_links a:after {
 	content: '';
 	position: absolute;
 	background-color: #0f6b96;
@@ -50,24 +52,21 @@ nav {
 	bottom: -10px;
 	transition: 400ms;
 }
-.menu_links a:hover::after {
+#menu_links a:hover::after {
 	width: 100%;
 }
 .login_div {
-	display: flex;
-	justify-content: center;
-	width: 100px;
+	width: max-content;
+	margin: 0px 10px;
 }
 .login {
 	background: transparent;
 	border: none;
-	width: 100px;
-	height: 40px;
 	border-radius: 4px;
 	cursor: pointer;
 	transition: 300ms;
 }
-.login a {
+#login_button {
 	text-decoration: none;
 	color: #ffffff;
 	font-weight: 600;
@@ -75,7 +74,7 @@ nav {
 .login:hover {
 	background: #ffffff;
 }
-.login:hover #Login_button {
+.login:hover #login_button {
 	color: #0b415a;
 }
 
@@ -83,11 +82,12 @@ nav {
 	display: flex;
 	width: 100%;
 	min-height: 80vh;
+	margin: 20px 0px;
 	align-items: center;
 	justify-content: space-evenly;
 }
 #drag-area {
-	width: 700px;
+	width: 55%;
 	height: 394px;
 	padding: 2%;
 	background: #f2f2f2;
@@ -109,14 +109,20 @@ nav {
 	height: 50%;
 }
 #image-view span {
-	margin-top: 10px;
 	display: block;
 	font-size: 0.7rem;
 	color: #808080;
 }
+form {
+	width: max-content;
+	height: max-content;
+}
+textarea {
+	width: 55%;
+}
 #convert {
-	height: 2rem;
-	width: 6rem;
+	padding: 7px;
+	margin: 20px;
 }
 @media (width<900px) {
 	* {
@@ -126,11 +132,20 @@ nav {
 		width: 80px;
 		height: 32px;
 	}
-	.title {
-		width: 160px;
+	.logo_class {
+		width: 100px;
 	}
-	.menu_links {
-		gap: 20px;
+	.menu {
+		width: 50%;
+	}
+	#menu_links {
+		width: 400px;
+	}
+	#drag-area {
+		width: 65%;
+	}
+	textarea {
+		width: 65%;
 	}
 }
 
@@ -142,10 +157,39 @@ nav {
 		width: 90px;
 		height: 36px;
 	}
-	.title {
-		width: 180px;
+	.logo_class {
+		width: 130px;
 	}
-	.menu_links {
-		gap: 30px;
+}
+@media (width>=1024px) {
+	* {
+		font-size: 18px;
+	}
+	.login {
+		width: 90px;
+		height: 36px;
+	}
+	.logo_class {
+		width: 150px;
+	}
+	#drag-area {
+		width: 40%;
+	}
+	textarea {
+		width: 35%;
+	}
+}
+@media (width<=1440px) {
+	.hero {
+		flex-direction: column;
+		justify-content: space-around;
+	}
+}
+@media (width<=700px) {
+	#drag-area {
+		width: 75%;
+	}
+	textarea {
+		width: 75%;
 	}
 }

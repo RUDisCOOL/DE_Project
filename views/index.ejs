@@ -9,24 +9,27 @@
 	</head>
 	<body>
 		<nav>
-			<div class="title">
+			<div class="logo_class">
 				<img
-					src="/public/assets/images/logo_temp_cropped3.png"
+					id="logo"
+					src="/public/assets/images/logo_2_2_-removebg-preview.png"
 					alt="ScanTextify: Extract Text From images"
 				/>
 			</div>
 			<div class="menu">
-				<ul class="menu_links">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Key Features</a></li>
-					<li><a href="#">Contact Us</a></li>
-				</ul>
+				<div id="menu_links">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">About Us</a></li>
+						<li><a href="#">Key Features</a></li>
+						<li><a href="#">Contact Us</a></li>
+					</ul>
+				</div>
 			</div>
 			<div class="login_div">
 				<button class="login">
 					<a
-						id="Login_button"
+						id="login_button"
 						target="_main"
 						href="/public/assets/login/index.html"
 						>Login</a
@@ -42,6 +45,7 @@
 						alt="upload"
 					/>
 					<p>Drag and Drop or Click here <br />To upload image</p>
+					<br />
 					<span>Upload ANY images from Desktop</span>
 				</div>
 			</label>
@@ -56,7 +60,7 @@
 				/>
 				<button id="convert" type="submit">Convert</button>
 			</form>
-			<textarea readonly name="Output textarea" id="" cols="50" rows="10">
+			<textarea readonly name="Output textarea" id="" cols="" rows="10">
 				<%=data%>
 			</textarea
 			>
