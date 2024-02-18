@@ -7,6 +7,7 @@ const fs = require('fs');
 const multer = require('multer');
 const { resolve } = require('path');
 app.use('/public', express.static('public'));
+
 const { createWorker } = require('tesseract.js');
 
 async function getTextFromImage(data) {
