@@ -6,6 +6,9 @@ const app = express();
 const fs = require('fs');
 const multer = require('multer');
 const { resolve } = require('path');
+const routers = require('./routers/r');
+
+
 app.use('/public', express.static('public'));
 
 const { createWorker } = require('tesseract.js');
@@ -32,9 +35,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single('xyz');
 
 app.set('view engine', 'ejs');
-app.get('/', (req, res) => {
-	res.render('index', { data: '' });
-});
+app.use('/', routers);
+
 app.post('/upload', (req, res) => {
 	upload(req, res, (err) => {
 		fs.readFile(`./uploads/${req.file.originalname}`, async (err, data) => {
