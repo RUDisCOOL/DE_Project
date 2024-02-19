@@ -7,11 +7,32 @@ const fs = require('fs');
 const multer = require('multer');
 const { resolve } = require('path');
 const routers = require('./routers/r');
-
-
-app.use('/public', express.static('public'));
-
 const { createWorker } = require('tesseract.js');
+const { throws } = require('assert');
+const dbconnect = require('./database/db');
+
+const conn = dbconnect.query(" CREATE TABLE IF NOT EXISTS authentication(user_id CHAR(10),user_email CHAR(30),user_password CHAR(10),PRIMARY KEY(user_id));");
+conn
+
+function datatosql(data) {
+    let sql = `INSERT INTO authentication(user_id,user_email,user_password) VALUES('${data.username}','${data.email}','${data.password}');`;
+    dbconnect.query(sql, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+        }
+    });
+}
+
+function adddata(formData) {
+    let data = new Promise(() => {
+        datatosql(formData);
+    })
+    return data
+}
+
+app.use('/public', express.static('./public'));
 
 async function getTextFromImage(data) {
 	const worker = await createWorker('eng', 1, {
@@ -24,6 +45,7 @@ async function getTextFromImage(data) {
 	await worker.terminate();
 	return text;
 }
+
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, './uploads');
@@ -32,10 +54,23 @@ const storage = multer.diskStorage({
 		cb(null, file.originalname);
 	},
 });
+
 const upload = multer({ storage: storage }).single('xyz');
 
 app.set('view engine', 'ejs');
+app.use(express.urlencoded({ extended: true }));
 app.use('/', routers);
+
+app.post('/sendToServer', (req, res) => {
+    let formData = req.body;
+    async function insertData() {
+        let conn = await adddata(formData);
+        console.log(conn);
+    }
+    insertData();
+    res.send('data inserted');
+})
+
 
 app.post('/upload', (req, res) => {
 	upload(req, res, (err) => {
