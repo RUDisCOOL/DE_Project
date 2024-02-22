@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
-const mysql = require('mysql2')
-const dotenv = require('dotenv')
+const mysql = require('mysql2');
+const bcrypt = require('bcrypt');
+const dotenv = require('dotenv');
 dotenv.config();
 
 const pool = mysql.createPool({
@@ -12,8 +13,20 @@ const pool = mysql.createPool({
 })
 
 
+async function hashPassword(password) {
+    const hashedPassword = await bcrypt.hash(password, 10);
+    return hashedPassword
+}
+
+
+async function checkHashPassword(password, hash) {
+    const isValid = await bcrypt.compare(password, hash);
+    return isValid
+}
+
+
 function create_table() {
-    pool.query(" CREATE TABLE IF NOT EXISTS authentication(user_name CHAR(50),user_email CHAR(50),user_password CHAR(50),PRIMARY KEY(user_name));");
+    pool.query(" CREATE TABLE IF NOT EXISTS authentication(user_name CHAR(50),user_email CHAR(50),user_password CHAR(200),PRIMARY KEY(user_name));");
 }
 
 
@@ -38,13 +51,14 @@ function tocheckusername(common_data) {
 
 function tocheckpassword(signup_Data) {
     let checkForPassword = new Promise((resolve) => {
-        let sql = `SELECT user_password FROM authentication WHERE user_password = "${signup_Data}";`;
+        let sql = `SELECT user_password FROM authentication WHERE user_name = "${signup_Data.username}";`;
         pool.execute(sql, (err, result) => {
             if (err) {
                 console.log(err);
             } else {
                 if (result.length > 0) {
-                    resolve(true);
+                    let check = checkHashPassword(signup_Data.password, result[0].user_password);
+                    resolve(check);
                 } else {
                     resolve(false);
                 }
@@ -56,12 +70,13 @@ function tocheckpassword(signup_Data) {
 
 
 async function datatosql(signup_Data, callback) {
+    let hashedPassword = await hashPassword(signup_Data.password);
     let sql = `INSERT INTO authentication(user_name,user_email,user_password) 
     VALUES(?,?,?);`;
     let check = await tocheckusername(signup_Data.username);
     if (check === false) {
         if (signup_Data.password === signup_Data.confirmPassword) {
-            pool.execute(sql, [signup_Data.username, signup_Data.email, signup_Data.password], (err, result) => {
+            pool.execute(sql, [signup_Data.username, signup_Data.email, hashedPassword], (err, result) => {
                 if (err) {
                     console.log(err);
                     callback(err, null);
@@ -81,7 +96,7 @@ async function datatosql(signup_Data, callback) {
 
 async function checkDataForLogin(login_Data, callback) {
     let checkUsername = await tocheckusername(login_Data.username);
-    let checkPassword = await tocheckpassword(login_Data.password);
+    let checkPassword = await tocheckpassword(login_Data);
     if (checkUsername === true) {
         if (checkPassword === true) {
             callback(null, "login successfully");
