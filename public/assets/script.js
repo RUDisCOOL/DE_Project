@@ -30,23 +30,26 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-const swiper = new Swiper('.swiper', {
-	// Optional parameters
-	
-  
-	// If we need pagination
-	pagination: {
-	  el: '.swiper-pagination',
-	},
-  
-	// Navigation arrows
-	navigation: {
-	  nextEl: '.swiper-button-next',
-	  prevEl: '.swiper-button-prev',
-	},
-  
-	// And if we need scrollbar
-	scrollbar: {
-	  el: '.swiper-scrollbar',
-	},
-  });
+const video = document.getElementById('video');
+const toggleMuteButton = document.getElementById('toggle-mute');
+const togglePlayButton = document.getElementById('toggle-play');
+
+toggleMuteButton.addEventListener('click', () => {
+    video.muted = !video.muted;
+    toggleMuteButton.textContent = video.muted ? 'Unmute' : 'Mute';
+});
+
+togglePlayButton.addEventListener('click', () => {
+    if (video.paused) {
+        video.play();
+        togglePlayButton.textContent = 'Pause';
+    } else {
+        video.pause();
+        togglePlayButton.textContent = 'Play';
+    }
+});
+
+video.addEventListener('ended', () => {
+    togglePlayButton.textContent = 'Play';
+});
+

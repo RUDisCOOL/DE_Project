@@ -132,6 +132,8 @@ textarea {
 	background-color: white;
 	transition: background-color 0.3s, color 0.3s;
 	cursor: pointer;
+	border-radius: 150px;
+	padding: 9px;
 }
 #convert:hover {
 	color: white;
@@ -253,4 +255,36 @@ textarea {
 
 #key-features{
 	margin-top: 6rem;
+	
+}
+.video-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	height: 100vh;
+}
+
+.video-section #video {
+	border-radius: 40px;
+}
+#controls {
+    bottom: 10px;
+    left: 10px;
+	margin-left: 45rem;
+}
+
+#controls button {
+	margin-bottom: 30px;
+	background-color: white;
+	color: purple;
+	padding: 9px;
+	border-radius: 150px;
+    margin-right: 10px;
+}
+
+#controls button:hover{
+	background-color: purple;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
 }
