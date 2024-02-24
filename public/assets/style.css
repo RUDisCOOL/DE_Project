@@ -70,6 +70,7 @@ nav {
 	text-decoration: none;
 	color: #ffffff;
 	font-weight: 600;
+	transition: background 0.3s, color 0.3s;
 }
 .login:hover {
 	background: #ffffff;
@@ -120,9 +121,19 @@ form {
 textarea {
 	width: 55%;
 }
+
 #convert {
 	padding: 7px;
 	margin: 20px;
+	color: purple;
+	background-color: white;
+	transition: background-color 0.3s, color 0.3s;
+	cursor: pointer;
+}
+#convert:hover {
+	color: white;
+	background-color: purple;
+	
 }
 @media (width<900px) {
 	* {
@@ -192,4 +203,19 @@ textarea {
 	textarea {
 		width: 75%;
 	}
+}
+
+/* about-section */
+
+.section__text .title {
+    font-weight: 600;
+}
+
+.section__text__p1{
+	color: purple;
+    text-align: center;
+}
+.title {
+	font-size: 3rem;
+	text-align: center;
 }
