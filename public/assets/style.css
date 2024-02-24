@@ -6,6 +6,9 @@
 	box-sizing: border-box;
 	font-family: Poppins, sans-serif;
 }
+html {
+	scroll-behavior: smooth;
+}
 nav {
 	display: flex;
 	justify-content: space-around;
@@ -218,4 +221,36 @@ textarea {
 .title {
 	font-size: 3rem;
 	text-align: center;
+}
+
+.about-details {
+	display: flex;
+	justify-content: space-between;
+	width: auto;
+	margin-top: 6rem;
+}
+.noob-img img {
+	margin-top: 2rem;
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+	border-radius: 2rem;
+	margin-left: 8rem;
+}
+
+.description {
+	width: 800px;
+	margin-right: 6rem;
+	margin-top: 2rem;
+}
+
+.vier {
+	color: black;
+	text-decoration: none;
+}
+
+/* key features */
+
+#key-features{
+	margin-top: 6rem;
 }
