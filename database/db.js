@@ -12,23 +12,19 @@ const pool = mysql.createPool({
     database: process.env.MYSQL_DATABASE,
 })
 
-
 async function hashPassword(password) {
     const hashedPassword = await bcrypt.hash(password, 10);
     return hashedPassword
 }
-
 
 async function checkHashPassword(password, hash) {
     const isValid = await bcrypt.compare(password, hash);
     return isValid
 }
 
-
 function create_table() {
     pool.query(" CREATE TABLE IF NOT EXISTS authentication(user_name CHAR(50),user_email CHAR(50),user_password CHAR(200),PRIMARY KEY(user_name));");
 }
-
 
 function tocheckusername(common_data) {
     let checkdata = new Promise((resolve) => {
@@ -48,7 +44,6 @@ function tocheckusername(common_data) {
     return checkdata
 }
 
-
 function tocheckpassword(signup_Data) {
     let checkForPassword = new Promise((resolve) => {
         let sql = `SELECT user_password FROM authentication WHERE user_name = "${signup_Data.username}";`;
@@ -67,7 +62,6 @@ function tocheckpassword(signup_Data) {
     })
     return checkForPassword
 }
-
 
 async function datatosql(signup_Data, callback) {
     let hashedPassword = await hashPassword(signup_Data.password);
@@ -93,7 +87,6 @@ async function datatosql(signup_Data, callback) {
     }
 }
 
-
 async function checkDataForLogin(login_Data, callback) {
     let checkUsername = await tocheckusername(login_Data.username);
     let checkPassword = await tocheckpassword(login_Data);
@@ -110,7 +103,6 @@ async function checkDataForLogin(login_Data, callback) {
     }
 }
 
-
 function add_data_for_signup(signup_Data) {
     return new Promise((resolve, reject) => {
         datatosql(signup_Data, (err, result) => {
@@ -123,7 +115,6 @@ function add_data_for_signup(signup_Data) {
     });
 }
 
-
 function add_data_for_login(login_Data) {
     return new Promise((resolve, reject) => {
         checkDataForLogin(login_Data, (err, result) => {
@@ -135,7 +126,6 @@ function add_data_for_login(login_Data) {
         });
     });
 }
-
 
 module.exports = {
     create_table,

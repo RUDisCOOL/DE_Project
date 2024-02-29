@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 
 router.get('/login', (req, res) => {
     console.log('Request for login page recieved');
-    res.render('login');
+    res.render('login'); 
 });
 
 module.exports = router;
