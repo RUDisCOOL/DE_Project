@@ -47,7 +47,7 @@ app.post('/sendToServer', async (req, res) => {
     try {
         let conn = await dbconnect.add_data_for_signup(signup_Data);
         console.log(conn);
-        res.send("data inserted successfully");
+        res.render('login');
     } catch (error) {
         console.error(error);
         res.status(500).send(error);
@@ -62,7 +62,7 @@ app.post('/sendForLogin', async (req, res) => {
         res.send("login successfully");
     } catch (error) {
         console.error(error);
-        res.status(500).send(error);
+        res.send(error);
     }
 })
 
