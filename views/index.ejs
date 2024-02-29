@@ -4,9 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
-		<link rel="stylesheet" href="/public/assets/css/mediaqueries.css" type="text/css" />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-
+		<link rel="stylesheet" href="/public/assets/mediaqueries.css" type="text/css" />
 		<title>Extract Text From Image</title>
 	</head>
 	<body>
@@ -31,9 +29,9 @@
 			</div>
 			<div class="menu-links">
 				<li><a href="#about" onclick="toggleMenu()">About Us</a></li>
-					<li><a href="#experience" onclick="toggleMenu()">Key Features</a></li>
-					<li><a href="#project" onclick="toggleMenu()">Contact Us</a></li>
-					<li><a href="#contact" onclick="toggleMenu()">Login</a></li>
+					<li><a href="#key-features" onclick="toggleMenu()">Key Features</a></li>
+					<li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
+					<li><a href="/public/assets/login/index.html" onclick="toggleMenu()">Login</a></li>
 			</div>
 			</div>
 		</nav>
@@ -73,11 +71,11 @@
 					<img src="/public/assets/images/noobs.jpeg" alt="noobs">
 				</div>
 				<div class="description">
-					<p>This project has been made under the GTU Design Engineering Curriculum. We are students of <a class="vier" href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara"><b>Vadodara Institute of Engineering and Research.</b> </a> This project namely <b>ScanTextify</b> has been built with the goal of extracting the texts from the images. Following are the team members and their respective contributions : </p>
-					<p> <br> <b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly Assssment reports' and provided valuable feedbacks. </p>
-					<p> <br> <b>Shrish Bhargav (front-row left)</b> : Made the frontend bit of the project with strong inputs in written canvas works. <br> </p>
-					<p> <br> <b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe engine that extracts texts from the images. <br> </p>
-					<p> <br> <b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend and user authnetication with a connection to the database. <br> </p>
+					<p id="desc_one">This project has been made under the GTU Design Engineering Curriculum. We are students of <a class="vier" href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara"><b>Vadodara Institute of Engineering and Research.</b> </a> This project namely <b>ScanTextify</b> has been built with the goal of extracting the texts from the images. Following are the team members and their respective contributions : </p>
+					<p id = "desc_two"> <br> <b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly Assssment reports' and provided valuable feedbacks. </p>
+					<p id = "desc_three"> <br> <b>Shrish Bhargav (front-row left)</b> : Made the frontend bit of the project with <strong></strong> inputs in written canvas works. <br> </p>
+					<p id="desc_four"> <br> <b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe engine that extracts texts from the images. <br> </p>
+					<p id="desc_five"> <br> <b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend and user authnetication with a connection to the database. <br> </p>
 					
 				</div>
 			</div>
@@ -88,10 +86,6 @@
 			<h1 class="title">Key Features</h1>
 			<div class="video-section">
 				<video src="/public/assets/textify.mp4" id="video" muted autoplay ></video>
-			</div>
-			<div id="controls">
-				<button id="toggle-mute">UnMute</button>
-				<button id="toggle-play">Play/Pause</button>
 			</div>
 			
 		</section>

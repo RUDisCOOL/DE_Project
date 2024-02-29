@@ -16,6 +16,7 @@ a, .btn {
 /* Navigation styles */
 nav, .nav-links {
     display: flex;
+    padding: auto;
 }
 
 nav {
@@ -71,7 +72,8 @@ a:hover {
     display: none;
 }
 .hamburger-menu {
-    display: none;
+    position: relative;
+    display: inline-block;
 }
 
 .hamburger-icon {
@@ -209,91 +211,6 @@ a:hover {
 }
 
 /* Responsive media queries */
-@media (max-width: 900px) {
-    * {
-        font-size: 16px;
-    }
-
-    .login {
-        width: 80px;
-        height: 32px;
-    }
-
-    .logo_class {
-        width: 100px;
-    }
-
-    .menu {
-        width: 50%;
-    }
-
-    #menu_links {
-        width: 400px;
-    }
-
-    #drag-area {
-        width: 65%;
-    }
-
-    textarea {
-        width: 65%;
-    }
-}
-
-@media (min-width: 900px) and (max-width: 1024px) {
-    * {
-        font-size: 18px;
-    }
-
-    .login {
-        width: 90px;
-        height: 36px;
-    }
-
-    .logo_class {
-        width: 130px;
-    }
-}
-
-@media (min-width: 1024px) {
-    * {
-        font-size: 18px;
-    }
-
-    .login {
-        width: 90px;
-        height: 36px;
-    }
-
-    .logo_class {
-        width: 150px;
-    }
-
-    #drag-area {
-        width: 40%;
-    }
-
-    textarea {
-        width: 35%;
-    }
-}
-
-@media (max-width: 1440px) {
-    .hero {
-        flex-direction: column;
-        justify-content: space-around;
-    }
-}
-
-@media (max-width: 700px) {
-    #drag-area {
-        width: 75%;
-    }
-
-    textarea {
-        width: 75%;
-    }
-}
 
 /* Other section styles */
 .section__text .title {
@@ -340,6 +257,10 @@ a:hover {
 /* Key features section styles */
 #key-features {
     margin-top: 6rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .video-section {
@@ -347,11 +268,13 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: auto; */
+    width: 80%;
 }
 
 #video {
     border-radius: 40px;
+    width: 100%;
 }
 
 #controls {
