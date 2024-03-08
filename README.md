@@ -23,6 +23,10 @@ cd into the directory
 ```
 cd DE_Project
 ```
+and make sure to change the branch to master
+```
+git checkout master
+```
 
 ## Step 3
 
