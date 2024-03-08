@@ -8,7 +8,12 @@ router.get('/', (req, res) => {
 
 router.get('/login', (req, res) => {
     console.log('Request for login page recieved');
-    res.render('login'); 
+    res.render('login', { error: ''}); 
+});
+
+router.get('/signup', (req, res) => {
+    console.log('Request for signup page recieved');
+    res.render('signup', { error: '' }); 
 });
 
 module.exports = router;

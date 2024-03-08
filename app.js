@@ -10,6 +10,7 @@ const routers = require('./routers/r');
 const { createWorker } = require('tesseract.js');
 const { throws } = require('assert');
 const dbconnect = require('./database/db');
+const { error } = require('console');
 
 dbconnect.create_table()
 
@@ -47,10 +48,10 @@ app.post('/sendToServer', async (req, res) => {
     try {
         let conn = await dbconnect.add_data_for_signup(signup_Data);
         console.log(conn);
-        res.render('login');
+        res.redirect('login');
     } catch (error) {
         console.error(error);
-        res.status(500).send(error);
+        res.render('signup', { error: error });
     }
 });
 
@@ -59,10 +60,10 @@ app.post('/sendForLogin', async (req, res) => {
     try {
         let conn = await dbconnect.add_data_for_login(login_Data);
         console.log(conn);
-        res.send("login successfully");
+        res.redirect('/');
     } catch (error) {
         console.error(error);
-        res.send(error);
+        res.render('login', { error: error });
     }
 })
 
