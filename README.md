@@ -1,8 +1,8 @@
-### DE Project
+# DE Project
 
 This is our final year Project of our engineering.
 
-## How to run this project locally in your compute
+## How to run this project locally in your computer
 
 To run this project locally follow the steps below
 

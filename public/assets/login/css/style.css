@@ -54,8 +54,6 @@ body {
 	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
 
-
-
 .wrapper .form-container form h2 {
 	font-size: 3rem;
 	text-align: center;
@@ -104,9 +102,9 @@ body {
 }
 
 form .form-group input:focus ~ label,
-form .form-group input:valid ~ label,
+form .form-group input:not(:placeholder-shown) ~ label,
 form .form-group input:focus ~ i,
-form .form-group input:valid ~ i {
+form .form-group input:not(:placeholder-shown) ~ i {
 	top: 0 !important;
 	font-size: 1.2rem !important;
 	background-color: var(--whiteColor);
@@ -162,23 +160,18 @@ form .form-group input:valid ~ i {
 	color: #0b415a;
 }
 
-@keyframes signup-flip {
-	0% {
-		transform: translateX(0);
-		z-index: 1;
-	}
-
-	50% {
-		transform: translateX(50rem) scale(1.1);
-	}
-
-	100% {
-		transform: translateX(0) rotate(7deg) scale(1);
-	}
+.error {
+	display: flex;
+	justify-content: center;
+	margin: 2px 0;
+}
+.error > p {
+	color: red;
+	font-weight: 500;
+	font-size: 1.4rem;
 }
 
-button a{
+button a {
 	text-decoration: none;
 	color: #ffffff;
 }
-

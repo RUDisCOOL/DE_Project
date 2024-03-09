@@ -1,70 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/public/assets/index/css/style.css" type="text/css" />
 
-		<title>Extract Text From Image</title>
-	</head>
-	<body>
-		<nav>
-			<div class="logo_class">
-				<img
-					id="logo"
-					src="/public/assets/images/logo_2_2_-removebg-preview.png"
-					alt="ScanTextify: Extract Text From images"
-				/>
-			</div>
-			<div class="menu">
-				<div id="menu_links">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Key Features</a></li>
-						<li><a href="#">Contact Us</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="login_div">
-				<button class="login">
-					<a
-						id="login_button"
-						target="_main"
-						href="login"
-						>Login</a
-					>
-				</button>
-			</div>
-		</nav>
-		<div class="hero">
-			<label for="input-file" id="drag-area">
-				<div id="image-view">
-					<img
-						src="/public/assets/images/upload-removebg-preview.png"
-						alt="upload"
-					/>
-					<p>Drag and Drop or Click here <br />To upload image</p>
-					<br />
-					<span>Upload ANY images from Desktop</span>
-				</div>
-			</label>
-			<form action="/upload" method="POST" enctype="multipart/form-data">
-				<input
-					type="file"
-					name="xyz"
-					accept="image/*"
-					id="input-file"
-					required
-					hidden
-				/>
-				<button id="convert" type="submit">Convert</button>
-			</form>
-			<textarea readonly name="Output textarea" id="" cols="" rows="10">
-				<%=data%>
-			</textarea
-			>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/public/assets/index/css/style.css" type="text/css" />
+
+	<title>Extract Text From Image</title>
+</head>
+
+<body>
+	<nav>
+		<div class="logo_class">
+			<img id="logo" src="/public/assets/images/logo_2_2_-removebg-preview.png"
+				alt="ScanTextify: Extract Text From images" />
 		</div>
-		<script src="/public/assets/index/js/script.js"></script>
-	</body>
+		<div class="menu">
+			<div id="menu_links">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Key Features</a></li>
+					<li><a href="#">Contact Us</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="login_div">
+			<button class="login">
+				<a id="login_button" target="_main" href="login">Login</a>
+			</button>
+		</div>
+	</nav>
+	<div class="hero">
+		<label for="input-file" id="drag-area">
+			<div id="image-view">
+				<img src="/public/assets/images/upload-removebg-preview.png" alt="upload" />
+				<p>Drag and Drop or Click here <br />To upload image</p>
+				<br />
+				<span>Upload ANY images from Desktop</span>
+			</div>
+		</label>
+		<form action="/upload" method="POST" enctype="multipart/form-data">
+			<input type="file" name="xyz" accept="image/*" id="input-file" required hidden />
+			<button id="convert" type="submit">Convert</button>
+		</form>
+		<textarea readonly name="Output textarea" id="" cols="" rows="10">
+				<%=data%>
+			</textarea>
+	</div>
+	<script src="/public/assets/index/js/script.js"></script>
+</body>
+
 </html>

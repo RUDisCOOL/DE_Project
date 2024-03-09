@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/public/assets/login/css/style.css" />
-		<title>Sign up</title>
-	</head>
 
-	<body>
-		<div class="wrapper">
-			<div class="form-container sign-up">
-				<form action="/sendToServer" method="POST">
-					<h2>sign up</h2>
-					<div class="form-group">
-						<input type="text" name="username" required />
-						<label for="">username</label>
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="form-group">
-						<input type="email" name="email" required />
-						<label for="">email</label>
-						<i class="fas fa-at"></i>
-					</div>
-					<div class="form-group">
-						<input type="password" name="password" required />
-						<label for="">password</label>
-						<i class="fas fa-lock"></i>
-					</div>
-					<div class="form-group">
-						<input type="password" name="confirmPassword" required />
-						<label for="">confirm password</label>
-						<i class="fas fa-lock"></i>
-					</div>
-                    <div closs="error">
-                        <%=error%>
-                    </div>
-					<button type="submit" class="btn">sign up</button>
-					<div class="link">
-						<p>
-							You already have an account?<a href="login" class="signin-link">
-								sign in</a
-							>
-						</p>
-					</div>
-				</form>
-			</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/public/assets/login/css/style.css" />
+	<title>Sign up</title>
+</head>
+
+<body>
+	<div class="wrapper">
+		<div class="form-container sign-up">
+			<form action="/sendToServer" method="POST">
+				<h2>sign up</h2>
+				<div class="form-group">
+					<input placeholder="" type="text" id="username" name="username" autocomplete="off" required />
+					<label for="username">username</label>
+					<i class="fas fa-user"></i>
+				</div>
+				<div class="form-group">
+					<input placeholder="" type="email" id="email" name="email" autocomplete="off" required />
+					<label for="email">email</label>
+					<i class="fas fa-at"></i>
+				</div>
+				<div class="form-group">
+					<input placeholder="" type="password" id="password" name="password" autocomplete="new-password" required />
+					<label for="password">password</label>
+					<i class="fas fa-lock"></i>
+				</div>
+				<div class="form-group">
+					<input placeholder="" type="password" id="confirmPassword" name="confirmPassword" autocomplete="new-password" required />
+					<label for="confirmPassword">confirm password</label>
+					<i class="fas fa-lock"></i>
+				</div>
+				<div class="error">
+					<p>
+						<%=error%>
+					</p>
+				</div>
+				<button type="submit" class="btn">sign up</button>
+				<div class="link">
+					<p>
+						You already have an account?<a href="login" class="signin-link">
+							sign in</a>
+					</p>
+				</div>
+			</form>
 		</div>
-		<script
-			src="https://kit.fontawesome.com/9e5ba2e3f5.js"
-			crossorigin="anonymous"
-		></script>
-	</body>
+	</div>
+	<script src="/public/assets/login/js/main.js" crossorigin="anonymous"></script>
+</body>
+
 </html>

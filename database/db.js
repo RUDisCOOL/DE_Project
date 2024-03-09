@@ -23,7 +23,7 @@ async function checkHashPassword(password, hash) {
 }
 
 function create_table() {
-    pool.query(" CREATE TABLE IF NOT EXISTS authentication(user_name CHAR(50),user_email CHAR(50),user_password CHAR(200),PRIMARY KEY(user_name));");
+    pool.query("CREATE TABLE IF NOT EXISTS authentication(user_name CHAR(50),user_email CHAR(50),user_password CHAR(200),PRIMARY KEY(user_name));");
 }
 
 function tocheckusername(common_data) {
@@ -80,10 +80,10 @@ async function datatosql(signup_Data, callback) {
                 }
             });
         } else {
-            callback("Password does not match", null);
+            callback("*Password does not match*", null);
         }
     } else {
-        callback("Username already exists", null); 
+        callback("*Username already exists*", null); 
     }
 }
 
@@ -92,14 +92,14 @@ async function checkDataForLogin(login_Data, callback) {
     let checkPassword = await tocheckpassword(login_Data);
     if (checkUsername === true) {
         if (checkPassword === true) {
-            callback(null, "login successfully");
+            callback(null, "*Login Successful*");
         } 
         else {
-            callback("Password does not match", null);
+            callback("*Password does not match*", null);
         }
     } 
     else {
-        callback("Username does not exist", null);
+        callback("*Username does not exist*", null);
     }
 }
 
