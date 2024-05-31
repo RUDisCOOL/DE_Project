@@ -3,8 +3,8 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const sendEmail = require('../views/sendEmail'); // Path to your sendEmail.js file
 
+
 router.get('/', (req, res) => {
-	console.log('Request for index recieved');
 	res.render('index', { data: '' });
 });
 
