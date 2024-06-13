@@ -149,15 +149,14 @@ a:hover {
 .hero {
 	display: flex;
 	width: 100%;
-	min-height: 80vh;
-	margin: 20px 0px;
+	min-height: 50vh;
 	align-items: center;
 	justify-content: space-evenly;
 }
 
 #drag-area {
 	width: 55%;
-	height: 394px;
+	height: 400px;
 	padding: 2%;
 	background: #f2f2f2;
 	text-align: center;
@@ -192,11 +191,12 @@ a:hover {
 
 #textarea-hero {
 	width: 40%;
-	height: 50vh;
+	height: 400px;
 	text-align: center;
+	resize: none;
 }
 
-#convert {
+.button {
 	padding: 6px 10px;
 	margin: 20px;
 	color: purple;
@@ -206,7 +206,7 @@ a:hover {
 	border-radius: 7px;
 }
 
-#convert:hover {
+.button:hover {
 	color: white;
 	background-color: purple;
 }
@@ -222,15 +222,13 @@ a:hover {
 	color: purple;
 	text-align: center;
 }
-.footer {
-	padding: 45px;
-}
+
 .title {
 	font-size: 3rem;
 	text-align: center;
 }
 #about {
-	padding: 50px;
+	padding-top: 50px;
 }
 .about-details {
 	display: flex;
@@ -240,17 +238,14 @@ a:hover {
 }
 
 .noob-img img {
-	/* margin-top: 2rem; */
-	/* max-width: 600px; */
 	width: 100%;
-	margin: 10px;
-	/* float: left; */
-	/* height: auto; */
 	border-radius: 2rem;
-	/* margin-left: 8rem; */
 }
 .noob-img {
 	width: 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 /* .description {
 	width: 50%;
@@ -260,12 +255,13 @@ a:hover {
 .description {
 	text-align: justify;
 	padding: 15px;
+	padding-top: 45px;
 	width: 45%;
 }
 
 /* Key features section styles */
 #key-features {
-	padding: 50px;
+	padding-top: 50px;
 	align-items: center;
 	justify-content: center;
 	display: flex;
@@ -315,7 +311,7 @@ a:hover {
 
 #contact {
 	/* margin-top: 8rem; */
-	padding: 50px;
+	padding: 50px 0px;
 }
 
 .contact-info-upper-container {
@@ -334,16 +330,21 @@ a:hover {
 
 label {
 	display: block;
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
 }
 
 input[type='email'],
-textarea {
+#message {
 	width: 100%;
+	resize: none;
 	padding: 8px;
 	margin-bottom: 10px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
+}
+
+#message {
+	height: 100px;
 }
 
 button {
@@ -361,11 +362,10 @@ button:hover {
 }
 
 /* Footer styles */
-#footer {
-	height: 26vh;
-	margin: 0 1rem;
-}
-
 footer p {
 	text-align: center;
+}
+
+footer {
+	padding: 30px;
 }

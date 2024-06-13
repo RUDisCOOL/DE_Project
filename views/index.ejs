@@ -17,7 +17,7 @@
 				<li><a href="#about">About Us</a></li>
 				<li><a href="#key-features">Key Features</a></li>
 				<li><a href="#contact">Contact Us</a></li>
-				<li id="log"><a target="_blank" href="/login">Login</a></li>
+				<li id="log"><a target="_main" href="/login">Login</a></li>
 			</ul>
 		</div>
 	</nav>
@@ -48,7 +48,7 @@
 		</label>
 		<form action="/upload" method="POST" enctype="multipart/form-data">
 			<input type="file" name="xyz" accept="image/*" id="input-file" required hidden />
-			<button id="convert" type="submit">Convert</button>
+			<button id="convert" type="submit" class="button">Convert</button>
 		</form>
 		<textarea readonly name="Output textarea" id="textarea-hero"><%=data%></textarea>
 
@@ -67,15 +67,12 @@
 							href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara">Vadodara
 							Institute of Engineering and Research. </a></b> This project namely <b>ScanTextify</b> has
 					been built with the goal of extracting the texts from the images. Following are the team members and
-					their respective contributions :<br>
-					<br> <b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly Assessment reports'
-					and provided valuable feedbacks.<br>
-					<br> <b>Shrish Bhargav (front-row left)</b> : Made the frontend bit of the project
-					with <strong></strong> inputs in written canvas works. <br>
-					<br> <b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe engine that
-					extracts texts from the images. <br>
-					<br> <b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend and user
-					authnetication with a connection to the database. <br>
+					their respective contributions :<br><br> <b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly
+					Assessment reports'and provided valuable feedbacks.<br><br> <b>Shrish Bhargav (front-row left)</b> :
+					Made the frontend bit of the project with <strong></strong> inputs in written canvas works. <br><br>
+					<b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe engine that extracts texts from the
+					images. <br><br> <b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend and user
+					authentication with a connection to the database. <br>
 				</p>
 
 			</div>
@@ -102,13 +99,13 @@
 					<input type="email" id="email" name="email" required><br>
 					<label for="message">Message:</label>
 					<textarea id="message" name="message" required></textarea><br>
-					<button type="submit">Send</button>
+					<button type="submit" class="button">Send</button>
 				</form>
 			</div>
 		</div>
 	</section>
 	<footer>
-		<p class="section__text__p1 footer">Copyright&#169; 2024 ScanTextify. All Rights Reserved. </p>
+		<p class="section__text__p1 ">Copyright&#169; 2024 ScanTextify. All Rights Reserved. </p>
 	</footer>
 	<script src="/public/assets/login/js/main.js"></script>
 	<script src="/public/assets/index/js/script.js"></script>
