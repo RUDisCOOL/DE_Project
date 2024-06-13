@@ -70,14 +70,15 @@
     #hamburger-nav {
         display:flex;
     }
-    .menu-links li a {
+   
+     .menu-links li a {
         font-size: 1rem;
         background-color: whitesmoke;
         padding: 5px;
         border: 1px solid black;
         border-radius: 2px;
-        color: purple;
-    }
+        color: green;
+    } 
     #drag-area {
         width: 75%;
     }
@@ -128,15 +129,34 @@
     }
     #hamburger-nav {
         display:flex;
+        
     }
-    .menu-links li a {
-        font-size: 1rem;
+    .hamburger-icon{
+        margin-left: 6rem;
+    } 
+    
+    .menu-links {
+        margin-top: 2rem;
+        overflow: hidden; 
+        max-height: 0; 
+        border: 2px solid white;
+        border-radius: 5px;
         background-color: whitesmoke;
-        padding: 5px;
-        border: 1px solid black;
-        border-radius: 2px;
-        color: purple;
+        transition: max-height 0.3s ease-out; 
     }
+    
+    .menu-links.open {
+        display: block;
+        box-shadow: 0 4px 8px rgb(101, 99, 99);
+        max-height: 12rem; 
+        border: 0px solid rgb(30, 29, 29);
+    }
+    
+     .menu-links li a {
+        font-size: 1rem;
+        justify-content: space-between;
+        color: purple;
+    } 
     #drag-area {
         width: 75%;
     }
