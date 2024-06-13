@@ -102,9 +102,9 @@ body {
 }
 
 form .form-group input:focus ~ label,
-form .form-group input:valid ~ label,
+form .form-group input:not(:placeholder-shown) ~ label,
 form .form-group input:focus ~ i,
-form .form-group input:valid ~ i {
+form .form-group input:not(:placeholder-shown) ~ i {
 	top: 0 !important;
 	font-size: 1.2rem !important;
 	background-color: var(--whiteColor);
@@ -160,79 +160,18 @@ form .form-group input:valid ~ i {
 	color: #0b415a;
 }
 
-.wrapper .sign-up {
-	transform: rotate(7deg);
+.error {
+	display: flex;
+	justify-content: center;
+	margin: 2px 0;
+}
+.error > p {
+	color: red;
+	font-weight: 500;
+	font-size: 1.4rem;
 }
 
-.wrapper.animated-signin .form-container.sign-in {
-	animation: signin-flip 1s ease-in-out forwards;
-}
-
-@keyframes signin-flip {
-	0% {
-		transform: translateX(0);
-	}
-
-	50% {
-		transform: translateX(-50rem) scale(1.1);
-	}
-
-	100% {
-		transform: translateX(0) rotate(7deg) scale(1);
-	}
-}
-
-.wrapper.animated-signin .form-container.sign-up {
-	animation: rotatecard 0.7s ease-in-out forwards;
-	animation-delay: 0.3s;
-}
-
-@keyframes rotatecard {
-	0% {
-		transform: rotate(7deg);
-	}
-
-	100% {
-		transform: rotate(0);
-		z-index: 1;
-	}
-}
-
-.wrapper.animated-signup .form-container.sign-up {
-	animation: signup-flip 1s ease-in-out forwards;
-}
-
-@keyframes signup-flip {
-	0% {
-		transform: translateX(0);
-		z-index: 1;
-	}
-
-	50% {
-		transform: translateX(50rem) scale(1.1);
-	}
-
-	100% {
-		transform: translateX(0) rotate(7deg) scale(1);
-	}
-}
-
-.wrapper.animated-signup .form-container.sign-in {
-	transform: rotate(7deg);
-	animation: rotatecard 0.7s ease-in-out forwards;
-	animation-delay: 0.3s;
-}
-button a{
+button a {
 	text-decoration: none;
 	color: #ffffff;
-}
-@keyframes rotatecard {
-	0% {
-		transform: rotate(7deg);
-	}
-
-	100% {
-		transform: rotate(0);
-		z-index: 1;
-	}
 }

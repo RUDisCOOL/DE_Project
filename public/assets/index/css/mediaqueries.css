@@ -1,0 +1,229 @@
+@media (max-width: 320px) {
+	html,
+	body {
+		overflow-x: hidden;
+	}
+	#drag-area {
+		width: 90%;
+		height: 200px;
+	}
+	#textarea-hero {
+		width: 90%;
+	}
+	.nav-links a {
+		text-decoration: none;
+		display: block;
+		font-size: 0.7rem;
+	}
+}
+@media (min-width: 320px) and (max-width: 375px) {
+	html,
+	body {
+		overflow-x: hidden;
+	}
+
+	#drag-area {
+		width: 75%;
+	}
+	#textarea-hero {
+		width: 75%;
+	}
+	.nav-links a {
+		text-decoration: none;
+		display: block;
+		font-size: 0.8rem;
+	}
+}
+
+@media (min-width: 375px) and (max-width: 425px) {
+	html,
+	body {
+		overflow-x: hidden;
+	}
+
+	#drag-area {
+		width: 75%;
+	}
+	#textarea-hero {
+		width: 75%;
+	}
+	.nav-links a {
+		text-decoration: none;
+		display: block;
+		font-size: 1rem;
+	}
+}
+
+@media (min-width: 425px) and (max-width: 768px) {
+	#drag-area {
+		width: 75%;
+	}
+	#textarea-hero {
+		width: 75%;
+	}
+	html,
+	body {
+		overflow-x: hidden;
+	}
+
+	.nav-links a {
+		text-decoration: none;
+		display: flex;
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 768px) {
+	#desktop-nav {
+		display: none;
+	}
+	#hamburger-nav {
+		display: flex;
+	}
+	/* .hamburger-icon {
+		margin-left: 6rem;
+	} */
+	.menu-links {
+		margin-top: 2rem;
+		overflow: hidden;
+		max-height: 0;
+		border: 2px solid white;
+		border-radius: 5px;
+		background-color: whitesmoke;
+		transition: max-height 0.3s ease-out;
+	}
+	.menu-links.open {
+		display: block;
+		box-shadow: 0 4px 8px rgb(101, 99, 99);
+		max-height: 12rem;
+		border: 0px solid rgb(30, 29, 29);
+	}
+	.menu-links li a {
+		font-size: 1rem;
+		justify-content: space-between;
+		color: purple;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	* {
+		font-size: 18px;
+	}
+	#drag-area {
+		width: 65%;
+	}
+	#textarea-hero {
+		width: 65%;
+	}
+	.login {
+		width: 90px;
+		height: 36px;
+	}
+	.logo_class {
+		width: 130px;
+	}
+	.hamburger-icon {
+		margin-left: 6rem;
+	}
+	.menu-links {
+		margin-top: 2rem;
+		overflow: hidden;
+		max-height: 0;
+		border: 2px solid white;
+		border-radius: 5px;
+		background-color: whitesmoke;
+		transition: max-height 0.3s ease-out;
+	}
+	.menu-links.open {
+		display: block;
+		box-shadow: 0 4px 8px rgb(101, 99, 99);
+		max-height: 12rem;
+		border: 0px solid rgb(30, 29, 29);
+	}
+	.menu-links li a {
+		font-size: 1rem;
+		justify-content: space-between;
+		color: purple;
+	}
+}
+
+@media (min-width: 1025px) {
+	* {
+		font-size: 18px;
+	}
+	.hero {
+		padding: 62px;
+	}
+	.login {
+		width: 90px;
+		height: 36px;
+	}
+	.logo_class {
+		width: 150px;
+	}
+	.hamburger-icon {
+		margin-left: 6rem;
+	}
+	.menu-links {
+		margin-top: 2rem;
+		overflow: hidden;
+		max-height: 0;
+		border: 2px solid white;
+		border-radius: 5px;
+		background-color: whitesmoke;
+		transition: max-height 0.3s ease-out;
+	}
+	.menu-links.open {
+		display: block;
+		box-shadow: 0 4px 8px rgb(101, 99, 99);
+		max-height: 12rem;
+		border: 0px solid rgb(30, 29, 29);
+	}
+	.menu-links li a {
+		font-size: 1rem;
+		justify-content: space-between;
+		color: purple;
+	}
+	#drag-area {
+		width: 35%;
+	}
+	#textarea-hero {
+		width: 35%;
+		height: 300px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.hero {
+		flex-direction: column;
+		justify-content: space-evenly;
+		/* height: 800px; */
+	}
+	#drag-area {
+		height: 300px;
+	}
+	#textarea-hero {
+		height: 170px;
+	}
+	.about-details {
+		flex-direction: column;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	.description {
+		padding-top: 45px;
+	}
+	.description,
+	.noob-img {
+		width: 90%;
+	}
+	.video-section {
+		width: 90%;
+	}
+	.noob-img img {
+		max-width: 400px;
+	}
+	#contact-information {
+		width: 80%;
+	}
+}
