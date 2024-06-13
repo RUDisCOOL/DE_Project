@@ -30,9 +30,12 @@ git checkout master
 
 ## Step 3
 
-Install the necessary dependencies to run the project
+Install the necessary dependencies to run the project, Now you can use any package manager you want 
 ```
 npm i
+```
+```
+pnpm i
 ```
 
 ## Step 4
@@ -54,6 +57,10 @@ copy this above into .env file and write the credentials of your database into q
 
 Finally you can run the project by the running the command
 ```
-node app.js 
+npm run dev
+```
+or
+```
+pnpm dev
 ```
 this should start a server in port 5500 make sure the port is open.
