@@ -3,38 +3,36 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="/public/assets/style.css" type="text/css" />
-
+		<link rel="stylesheet" href="/public/assets/index/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="/public/assets/index/css/mediaqueries.css" type="text/css" />
 		<title>Extract Text From Image</title>
 	</head>
 	<body>
-		<nav>
-			<div class="logo_class">
-				<img
-					id="logo"
-					src="/public/assets/images/logo_2_2_-removebg-preview.png"
-					alt="ScanTextify: Extract Text From images"
-				/>
+		<nav id="desktop-nav">
+			<div class="logo">ScanTextify</div>
+			<div>
+				<ul class="nav-links">
+					<li><a href="#about">About Us</a></li>
+					<li><a href="#key-features">Key Features</a></li>
+					<li><a href="#contact">Contact Us</a></li>
+					<li id="log"><a href="/login">Login</a></li>
+				</ul>
 			</div>
-			<div class="menu">
-				<div id="menu_links">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Key Features</a></li>
-						<li><a href="#">Contact Us</a></li>
-					</ul>
-				</div>
+		</nav>
+		<nav id="hamburger-nav">
+			<div class="logo">ScanTextify</div>
+			<div class="hamburger-menu">
+				<div class="hamburger-icon" onclick="toggleMenu()">
+				<span></span>
+				<span></span>
+				<span></span>
 			</div>
-			<div class="login_div">
-				<button class="login">
-					<a
-						id="login_button"
-						target="_main"
-						href="/public/assets/login/index.html"
-						>Login</a
-					>
-				</button>
+			<div class="menu-links">
+				<li><a href="#about" onclick="toggleMenu()">About Us</a></li>
+					<li><a href="#key-features" onclick="toggleMenu()">Key Features</a></li>
+					<li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
+					<li><a href="/public/assets/login/index.html" onclick="toggleMenu()">Login</a></li>
+			</div>
 			</div>
 		</nav>
 		<div class="hero">
@@ -60,11 +58,69 @@
 				/>
 				<button id="convert" type="submit">Convert</button>
 			</form>
-			<textarea readonly name="Output textarea" id="" cols="" rows="10">
+			<textarea readonly name="Output textarea" id="textarea-hero" cols="" rows="10">
 				<%=data%>
-			</textarea
-			>
+			</textarea>
+			
 		</div>
-		<script src="/public/assets/script.js"></script>
+		<section id="about">
+			<p class="section__text__p1">Get to know more</p>
+        	<h1 class="title">About Us</h1>
+			<div class="about-details">
+				<div class="noob-img">
+					<img src="/public/assets/images/noobs.jpeg" alt="noobs">
+				</div>
+				<div class="description">
+					<p id="desc_one">This project has been made under the GTU Design Engineering Curriculum. We are students of <a class="vier" href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara"><b>Vadodara Institute of Engineering and Research.</b> </a> This project namely <b>ScanTextify</b> has been built with the goal of extracting the texts from the images. Following are the team members and their respective contributions : </p>
+					<p id = "desc_two"> <br> <b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly Assssment reports' and provided valuable feedbacks. </p>
+					<p id = "desc_three"> <br> <b>Shrish Bhargav (front-row left)</b> : Made the frontend bit of the project with <strong></strong> inputs in written canvas works. <br> </p>
+					<p id="desc_four"> <br> <b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe engine that extracts texts from the images. <br> </p>
+					<p id="desc_five"> <br> <b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend and user authnetication with a connection to the database. <br> </p>
+					
+				</div>
+			</div>
+			
+		</section>
+		<section id="key-features">
+			<p class="section__text__p1">Explore our</p>
+			<h1 class="title">Key Features</h1>
+			<div class="video-section">
+				<video src="/public/assets/video/textify.mp4" id="video" muted autoplay ></video>
+			</div>
+			
+		</section>
+		<section id="contact">
+			<p class="section__text__p1">
+				Get in Touch
+			</p>
+			<h1 class="title">Contact Us</h1>
+			<div class="contact-info-upper-container">
+				<div class="contact-info-container">
+					<form id="contact-information" action="/send-email" method="POST">
+						<label for="email">Your Email:</label>
+						<input type="email" id="email" name="email" required><br>
+						<label  for="message">Message:</label>
+						<textarea id="message" name="message" required></textarea><br>
+						<button type="submit">Send</button>
+					</form>
+				</div>
+			</div>
+		</section>
+		<footer>
+			<nav>
+				<div id="menu_links">
+					<ul class="nav-links">
+						<li><a href="#about">About Us</a></li>
+						<li><a href="#key-features">Key Features</a></li>
+						<li><a href="#contact">Contact Us</a></li>
+						<li id="log"><a href="/login">Login</a></li>
+					</ul>
+	
+				</div>
+			</nav>
+			<p class="section__text__p1">Copyright&#169; 2024 ScanTextify. All Rights Reserved. </p>
+		</footer>
+		<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+		<script src="/public/assets/index/js/script.js"></script>
 	</body>
 </html>

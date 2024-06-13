@@ -6,9 +6,15 @@ const app = express();
 const fs = require('fs');
 const multer = require('multer');
 const { resolve } = require('path');
-app.use('/public', express.static('public'));
-
+const routers = require('./routers/r');
 const { createWorker } = require('tesseract.js');
+const { throws } = require('assert');
+const dbconnect = require('./database/db');
+const { error } = require('console');
+
+dbconnect.create_table()
+
+app.use('/public', express.static('./public'));
 
 async function getTextFromImage(data) {
 	const worker = await createWorker('eng', 1, {
@@ -21,6 +27,7 @@ async function getTextFromImage(data) {
 	await worker.terminate();
 	return text;
 }
+
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, './uploads');
@@ -29,12 +36,38 @@ const storage = multer.diskStorage({
 		cb(null, file.originalname);
 	},
 });
+
 const upload = multer({ storage: storage }).single('xyz');
 
 app.set('view engine', 'ejs');
-app.get('/', (req, res) => {
-	res.render('index', { data: '' });
+app.use(express.urlencoded({ extended: true }));
+app.use('/', routers);
+
+app.post('/sendToServer', async (req, res) => {
+    let signup_Data = req.body;
+    try {
+        let conn = await dbconnect.add_data_for_signup(signup_Data);
+        console.log(conn);
+        res.redirect('login');
+    } catch (error) {
+        console.error(error);
+        res.render('signup', { error: error });
+    }
 });
+
+app.post('/sendForLogin', async (req, res) => {
+    let login_Data = req.body;
+    try {
+        let conn = await dbconnect.add_data_for_login(login_Data);
+        console.log(conn);
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        res.render('login', { error: error });
+    }
+})
+
+
 app.post('/upload', (req, res) => {
 	upload(req, res, (err) => {
 		fs.readFile(`./uploads/${req.file.originalname}`, async (err, data) => {
