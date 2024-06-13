@@ -6,7 +6,7 @@ const app = express();
 const fs = require('fs');
 const multer = require('multer');
 const { resolve } = require('path');
-const routers = require('./routers/r');
+const routers = require('./routers/router');
 const { createWorker } = require('tesseract.js');
 const { throws } = require('assert');
 const dbconnect = require('./database/db');
@@ -44,27 +44,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/', routers);
 
 app.post('/sendToServer', async (req, res) => {
-    let signup_Data = req.body;
-    try {
-        let conn = await dbconnect.add_data_for_signup(signup_Data);
-        console.log(conn);
-        res.redirect('login');
-    } catch (error) {
-        console.error(error);
-        res.render('signup', { error: error });
-    }
+	let signup_Data = req.body;
+	try {
+		let conn = await dbconnect.add_data_for_signup(signup_Data);
+		console.log(conn);
+		res.redirect('login');
+	} catch (error) {
+		console.error(error);
+		res.render('signup', { error: "*" + error + "*" });
+	}
 });
 
 app.post('/sendForLogin', async (req, res) => {
-    let login_Data = req.body;
-    try {
-        let conn = await dbconnect.add_data_for_login(login_Data);
-        console.log(conn);
-        res.redirect('/');
-    } catch (error) {
-        console.error(error);
-        res.render('login', { error: error });
-    }
+	let login_Data = req.body;
+	try {
+		let conn = await dbconnect.add_data_for_login(login_Data);
+		console.log(conn);
+		res.redirect('/');
+	} catch (error) {
+		console.error(error);
+		res.render('login', { error: "*" + error + "*" });
+	}
 })
 
 
