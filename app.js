@@ -11,7 +11,6 @@ const { createWorker } = require("tesseract.js");
 const { throws } = require("assert");
 const dbconnect = require("./database/db");
 const { error } = require("console");
-const email = require("./email/send_email");
 const sendEmail = require("./email/send_email");
 
 dbconnect.create_table();
