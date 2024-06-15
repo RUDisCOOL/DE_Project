@@ -7,7 +7,7 @@
 		width: 90%;
 		height: 200px;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 90%;
 	}
 	.nav-links a {
@@ -25,7 +25,7 @@
 	#drag-area {
 		width: 75%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 75%;
 	}
 	.nav-links a {
@@ -44,7 +44,7 @@
 	#drag-area {
 		width: 75%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 75%;
 	}
 	.nav-links a {
@@ -58,7 +58,7 @@
 	#drag-area {
 		width: 75%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 75%;
 	}
 	html,
@@ -112,7 +112,7 @@
 	#drag-area {
 		width: 65%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 65%;
 	}
 	.login {
@@ -187,9 +187,9 @@
 	#drag-area {
 		width: 35%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 35%;
-		height: 300px;
+		height: 400px;
 	}
 }
 
@@ -202,8 +202,8 @@
 	#drag-area {
 		height: 300px;
 	}
-	#textarea-hero {
-		height: 170px;
+	#textarea-div {
+		height: 300px;
 	}
 	.about-details {
 		flex-direction: column;

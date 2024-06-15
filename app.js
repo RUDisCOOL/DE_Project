@@ -71,22 +71,23 @@ app.post("/upload", (req, res) => {
 	upload(req, res, (err) => {
 		fs.readFile(`./uploads/${req.file.originalname}`, async (err, data) => {
 			if (err) return console.log("This is your error: ", err);
-			const text = await getTextFromImage(data);
-			res.render("index", { data: text });
-			// res.send(text);
+			text = await getTextFromImage(data);
+			// res.render("index", { data: text });
+			text = text.replace(/\n/g, '&#13;&#10;');
+			res.send(text);
 		});
 	});
 });
 
 app.post("/send-email", async (req, res) => {
-    const message = req.body;
-    try{
-        await sendEmail(message.email, message.message);
-        res.redirect("/");
-    }catch(err){
-        console.log(err);
-        res.redirect("/");
-    }
+	const message = req.body;
+	try {
+		await sendEmail(message.email, message.message);
+		res.redirect("/");
+	} catch (err) {
+		console.log(err);
+		res.redirect("/");
+	}
 })
 
 

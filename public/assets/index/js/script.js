@@ -1,25 +1,38 @@
 const dropArea = document.getElementById('drag-area');
 const inputFile = document.getElementById('input-file');
 const imageView = document.getElementById('image-view');
+const copyButton = document.querySelector('.copy-button');
+const textArea = document.querySelector('#textarea-hero');
 
 inputFile.addEventListener('change', uploadImage);
 
 function uploadImage() {
-	let imgLink = URL.createObjectURL(inputFile.files[0]);
-	imageView.style.backgroundImage = `url(${imgLink})`;
-	imageView.textContent = '';
+    let imgLink = URL.createObjectURL(inputFile.files[0]);
+    imageView.style.backgroundImage = `url(${imgLink})`;
+    imageView.textContent = '';
 }
 
 dropArea.addEventListener('dragover', function (e) {
-	e.preventDefault();
+    e.preventDefault();
 });
 dropArea.addEventListener('drop', function (e) {
-	e.preventDefault();
-	inputFile.files = e.dataTransfer.files;
-	uploadImage();
+    e.preventDefault();
+    inputFile.files = e.dataTransfer.files;
+    uploadImage();
 });
+document.getElementById('upload-img').onsubmit = async function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    const response = await fetch('/upload', {
+        method: 'POST',
+        body: formData,
+    })
+    const data = await response.text();
 
+    document.getElementById('textarea-hero').innerHTML = data;
+}
 
+// JS to improve visual appearance
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -30,14 +43,30 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-function toggleMenu() {
+function toggleMenu(e) {
+    e.preventDefault();
     const menu = document.querySelector(".menu-links");
     const icon = document.querySelector(".hamburger-icon");
     menu.classList.toggle("open");
     icon.classList.toggle("open");
-    // menu.style.height = '60vh';
     menu.style.width = '50vw';
-    // icon.style.color = 'purple';
     menu.style.color = 'black';
-    // menu.style.border = '2px solid black'
-  }
+}
+
+copyButton.addEventListener('click', () => {
+    // navigator.clipboard.writeText(textArea.value); //NOTE: This method does not work when the connection is not secure meaning that when a website is not https certified. That is why I have used a deprecated command `execCommand('copy')`.
+    textArea.select();
+    textArea.setSelectionRange(0, textArea.value.length);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+    copyButton.innerHTML = `<i id="copy-icon" class="fa-solid fa-check"></i> <span>Copied!</span>`;
+    copyButton.style.width = `100px`;
+    copyButton.classList.add('clicked');
+    setTimeout(() => {
+        copyButton.style.width = `30px`;
+        setTimeout(() => {
+            copyButton.innerHTML = `<i id="copy-icon" class="fa-solid fa-copy"></i> `;
+        }, 200)
+        copyButton.classList.remove('clicked');
+    }, 2000);
+})

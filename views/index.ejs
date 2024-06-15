@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="stylesheet" href="/public/assets/index/css/style.css" type="text/css" />
 	<link rel="stylesheet" href="/public/assets/index/css/mediaqueries.css" type="text/css" />
+	<!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
 	<title>Extract Text From Image</title>
 </head>
 
@@ -24,16 +25,20 @@
 	<nav id="hamburger-nav">
 		<div class="logo">ScanTextify</div>
 		<div class="hamburger-menu">
-			<div class="hamburger-icon" onclick="toggleMenu()">
+			<div class="hamburger-icon" onclick="toggleMenu(event)">
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
 			<div class="menu-links">
 				<li><a href="#about" onclick="toggleMenu()">About Us</a></li>
-				<li><a href="#key-features" onclick="toggleMenu()">Key Features</a></li>
+				<li>
+					<a href="#key-features" onclick="toggleMenu()">Key Features</a>
+				</li>
 				<li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
-				<li><a href="/login" target="_main" onclick="toggleMenu()">Login</a></li>
+				<li>
+					<a href="/login" target="_main" onclick="toggleMenu()">Login</a>
+				</li>
 			</div>
 		</div>
 	</nav>
@@ -46,38 +51,52 @@
 				<span>Upload ANY images from Desktop</span>
 			</div>
 		</label>
-		<form action="/upload" method="POST" enctype="multipart/form-data">
+		<form id="upload-img">
 			<input type="file" name="xyz" accept="image/*" id="input-file" required hidden />
 			<button id="convert" type="submit" class="button">Convert</button>
 		</form>
-		<textarea readonly name="Output textarea" id="textarea-hero"><%=data%></textarea>
-
+		<div id="textarea-div">
+			<div id="textarea-head">
+				<span>Output Text</span>
+				<div class="copy-button">
+					<i id="copy-icon" class="fa-solid fa-copy"></i>
+				</div>
+			</div>
+			<div id="textarea-outer">
+				<textarea readonly name="Output textarea" id="textarea-hero"></textarea>
+			</div>
+		</div>
 	</div>
 	<section id="about">
 		<p class="section__text__p1">Get to know more</p>
 		<h1 class="title">About Us</h1>
 		<div class="about-details">
 			<div class="noob-img">
-				<img src="/public/assets/images/noobs.jpeg" alt="noobs">
+				<img src="/public/assets/images/noobs.jpeg" alt="noobs" />
 			</div>
 			<div class="description">
-				<p>This project has been made under the GTU Design Engineering Curriculum. We are
-					students
-					of <b><a class="vier"
+				<p>
+					This project has been made under the GTU Design Engineering
+					Curriculum. We are students of
+					<b><a class="vier"
 							href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara">Vadodara
-							Institute of Engineering and Research. </a></b> This project namely <b>ScanTextify</b> has
-					been built with the goal of extracting the texts from the images. Following are the team members and
-					their respective contributions :<br><br> <b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly
-					Assessment reports' and provided valuable feedbacks.<br><br> <b>Shrish Bhargav (front-row left)</b> :
-					Made the frontend bit of the project with <strong></strong> inputs in written canvas works. <br><br>
-					<b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe engine that extracts texts from the
-					images. <br><br> <b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend and user
-					authentication with a connection to the database. <br>
+							Institute of Engineering and Research.
+						</a></b>
+					This project namely <b>ScanTextify</b> has been built with the goal
+					of extracting the texts from the images. Following are the team
+					members and their respective contributions :<br /><br />
+					<b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly
+					Assessment reports' and provided valuable feedbacks.<br /><br />
+					<b>Shrish Bhargav (front-row left)</b> : Made the frontend bit of
+					the project with <strong></strong> inputs in written canvas works.
+					<br /><br />
+					<b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe
+					engine that extracts texts from the images. <br /><br />
+					<b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend
+					and user authentication with a connection to the database. <br />
 				</p>
-
 			</div>
 		</div>
-
 	</section>
 	<section id="key-features">
 		<p class="section__text__p1">Explore our</p>
@@ -85,27 +104,26 @@
 		<div class="video-section">
 			<video src="/public/assets/video/textify.mp4" id="video" muted autoplay></video>
 		</div>
-
 	</section>
 	<section id="contact">
-		<p class="section__text__p1">
-			Get in Touch
-		</p>
+		<p class="section__text__p1">Get in Touch</p>
 		<h1 class="title">Contact Us</h1>
 		<div class="contact-info-upper-container">
 			<div class="contact-info-container">
 				<form id="contact-information" action="/send-email" method="POST">
 					<label for="email">Your Email:</label>
-					<input type="email" autocomplete="email" id="email" name="email" required><br>
+					<input type="email" autocomplete="email" id="email" name="email" required /><br />
 					<label for="message">Message:</label>
-					<textarea id="message" name="message" required></textarea><br>
+					<textarea id="message" name="message" required></textarea><br />
 					<button type="submit" class="button">Send</button>
 				</form>
 			</div>
 		</div>
 	</section>
 	<footer>
-		<p class="section__text__p1 ">Copyright&#169; 2024 ScanTextify. All Rights Reserved. </p>
+		<p class="section__text__p1">
+			Copyright&#169; 2024 ScanTextify. All Rights Reserved.
+		</p>
 	</footer>
 	<script src="/public/assets/login/js/main.js"></script>
 	<script src="/public/assets/index/js/script.js"></script>
