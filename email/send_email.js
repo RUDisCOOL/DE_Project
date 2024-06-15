@@ -14,11 +14,10 @@ async function sendEmail(email, message) {
     const formatted_mail = {
         from: process.env.SENDER_USER,
         to: 'superrudra1601@gmail.com', // Change to your email address
-        subject: 'Message form the website user',
-        text: `
-        message form website user whoes mail is ${email}
+        subject: 'Message from the user',
+        text: `User's e-mail id: ${email}
 
-        ${message}
+        Message: '${message}'
         `,
     };
 
