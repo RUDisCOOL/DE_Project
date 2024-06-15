@@ -11,6 +11,7 @@ const { createWorker } = require("tesseract.js");
 const { throws } = require("assert");
 const dbconnect = require("./database/db");
 const { error } = require("console");
+const sendEmail = require("./email/send_email");
 
 dbconnect.create_table();
 app.use("/public", express.static("./public"));
@@ -76,6 +77,18 @@ app.post("/upload", (req, res) => {
 		});
 	});
 });
-//Start the server
-const PORT = 5500 || process.env.PORT;
+
+app.post("/send-email", async (req, res) => {
+    const message = req.body;
+    try{
+        await sendEmail(message.email, message.message);
+        res.redirect("/");
+    }catch(err){
+        console.log(err);
+        res.redirect("/");
+    }
+})
+
+
+const PORT = 5500;
 app.listen(PORT, () => console.log(`Hey I am running on port ${PORT}`));

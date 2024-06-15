@@ -4,7 +4,7 @@
 	"description": "This is our final year Project of our engineering.",
 	"main": "script.js",
 	"scripts": {
-        "dev": "node app.js"
+		"dev": "node app.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -13,11 +13,12 @@
 		"bcrypt": "^5.1.1",
 		"body-parser": "^1.20.2",
 		"dotenv": "^16.4.5",
-		"ejs": "^3.1.9",
+		"ejs": "^3.1.10",
 		"express": "^4.19.2",
 		"express-session": "^1.18.0",
-		"multer": "^1.4.5-lts.1",
-		"mysql2": "^3.9.1",
-		"tesseract.js": "^5.0.4"
+		"multer": "1.4.5-lts.1",
+		"mysql2": "^3.10.1",
+		"nodemailer": "^6.9.13",
+		"tesseract.js": "^5.1.0"
 	}
 }
