@@ -36,13 +36,13 @@ uploadForm.onsubmit = async (e) => {
 contactForm.onsubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(contactForm);
-    const data = Object.fromEntries(formData.entries());
+    const data = new URLSearchParams(formData);
     const response = await fetch('/send-email', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify(data),
+        body: data,
     });
     const result = await response.json();
     if (result.success) {
