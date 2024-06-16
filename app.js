@@ -83,10 +83,10 @@ app.post("/send-email", async (req, res) => {
 	const message = req.body;
 	try {
 		await sendEmail(message.email, message.message);
-		res.redirect("/");
+		res.json({ success: true });
 	} catch (err) {
 		console.log(err);
-		res.redirect("/");
+		res.json({ success: false });
 	}
 })
 

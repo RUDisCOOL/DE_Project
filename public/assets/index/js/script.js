@@ -3,6 +3,8 @@ const inputFile = document.getElementById('input-file');
 const imageView = document.getElementById('image-view');
 const copyButton = document.querySelector('.copy-button');
 const textArea = document.querySelector('#textarea-hero');
+const uploadForm = document.getElementById('upload-img');
+const contactForm = document.getElementById('contact-information');
 
 inputFile.addEventListener('change', uploadImage);
 
@@ -20,9 +22,9 @@ dropArea.addEventListener('drop', function (e) {
     inputFile.files = e.dataTransfer.files;
     uploadImage();
 });
-document.getElementById('upload-img').onsubmit = async function (e) {
+uploadForm.onsubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(this);
+    const formData = new FormData(uploadForm);
     const response = await fetch('/upload', {
         method: 'POST',
         body: formData,
@@ -30,6 +32,24 @@ document.getElementById('upload-img').onsubmit = async function (e) {
     const data = await response.text();
 
     document.getElementById('textarea-hero').innerHTML = data;
+}
+contactForm.onsubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData.entries());
+    const response = await fetch('/send-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    if (result.success) {
+        alert('Email sent successfully!');
+    } else {
+        alert('Failed to send email.');
+    }
 }
 
 // JS to improve visual appearance
