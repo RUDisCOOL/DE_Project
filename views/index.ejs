@@ -32,13 +32,9 @@
 			</div>
 			<div class="menu-links">
 				<li><a href="#about" onclick="toggleMenu()">About Us</a></li>
-				<li>
-					<a href="#key-features" onclick="toggleMenu()">Key Features</a>
-				</li>
+				<li><a href="#key-features" onclick="toggleMenu()">Key Features</a></li>
 				<li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
-				<li>
-					<a href="/login" target="_main" onclick="toggleMenu()">Login</a>
-				</li>
+				<li><a href="/login" target="_main" onclick="toggleMenu()">Login</a></li>
 			</div>
 		</div>
 	</nav>
@@ -51,15 +47,43 @@
 				<span>Upload ANY images from Desktop</span>
 			</div>
 		</label>
-		<form id="upload-img">
+		<form id="upload-img" style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
 			<input type="file" name="xyz" accept="image/*" id="input-file" required hidden />
-			<button id="convert" type="submit" class="button">Convert</button>
+			<section class="loading" hidden>
+				<div class="dots" hidden
+					style="height: 70px;width: 70px;display: flex;align-items: center; justify-content: center;">
+					<span style="--i:1;"></span>
+					<span style="--i:2;"></span>
+					<span style="--i:3;"></span>
+					<span style="--i:4;"></span>
+					<span style="--i:5;"></span>
+					<span style="--i:6;"></span>
+					<span style="--i:7;"></span>
+					<span style="--i:8;"></span>
+					<span style="--i:9;"></span>
+					<span style="--i:10;"></span>
+					<span style="--i:11;"></span>
+					<span style="--i:12;"></span>
+					<span style="--i:13;"></span>
+					<span style="--i:14;"></span>
+					<!-- <span style="--i:15;"></span>
+					<span style="--i:16;"></span> -->
+				</div>
+			</section>
+			<button id="convert" type="submit" class="button">
+				Convert
+			</button>
+			<p id="please-wait" style="text-align: center;" hidden><b>Please wait while we analyze your image!!</b></p>
 		</form>
 		<div id="textarea-div">
 			<div id="textarea-head">
 				<span>Output Text</span>
 				<div class="copy-button">
-					<i id="copy-icon" class="fa-solid fa-copy"></i>
+					<div class="icon-cpy">
+						<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-copy"></i>
+						<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-check"></i>
+						<span>Copied!</span>
+					</div>
 				</div>
 			</div>
 			<div id="textarea-outer">
@@ -69,7 +93,7 @@
 	</div>
 	<section id="about">
 		<p class="section__text__p1">Get to know more</p>
-		<h1 class="title">About Us</h1>
+		<h2 class="title">About Us</h2>
 		<div class="about-details">
 			<div class="noob-img">
 				<img src="/public/assets/images/noobs.jpeg" alt="noobs" />
@@ -100,14 +124,14 @@
 	</section>
 	<section id="key-features">
 		<p class="section__text__p1">Explore our</p>
-		<h1 class="title">Key Features</h1>
+		<h2 class="title">Key Features</h2>
 		<div class="video-section">
 			<video src="/public/assets/video/textify.mp4" id="video" muted autoplay></video>
 		</div>
 	</section>
 	<section id="contact">
 		<p class="section__text__p1">Get in Touch</p>
-		<h1 class="title">Contact Us</h1>
+		<h2 class="title">Contact Us</h2>
 		<div class="contact-info-upper-container">
 			<div class="contact-info-container">
 				<form id="contact-information">

@@ -109,6 +109,9 @@
 	* {
 		font-size: 18px;
 	}
+	#please-wait {
+		font-size: 10px;
+	}
 	#drag-area {
 		width: 65%;
 	}
@@ -150,6 +153,9 @@
 @media (min-width: 1025px) {
 	* {
 		font-size: 18px;
+	}
+	#please-wait {
+		font-size: 10px;
 	}
 	.hero {
 		padding: 62px;
