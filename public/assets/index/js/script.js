@@ -10,6 +10,7 @@ const contactForm = document.getElementById('contact-information');
 const convertButton = document.querySelector('#convert');
 const loadAnimate = document.querySelector('.loading');
 const waitMessage = document.querySelector('#please-wait');
+const sendMail = document.querySelector('#send-email');
 
 inputFile.addEventListener('change', uploadImage);
 
@@ -52,6 +53,7 @@ uploadForm.onsubmit = async (e) => {
 
 contactForm.onsubmit = async (e) => {
     e.preventDefault();
+    sendMail.disabled = true;
     const formData = new FormData(contactForm);
     const data = new URLSearchParams(formData);
     const response = await fetch('/send-email', {
@@ -67,6 +69,8 @@ contactForm.onsubmit = async (e) => {
     } else {
         alert('Failed to send email.');
     }
+    sendMail.disabled = false;
+
 }
 
 // JS to improve visual appearance
@@ -100,5 +104,5 @@ copyButton.addEventListener('click', () => {
     setTimeout(() => {
         copyIcon.classList.remove('clicked');
         copyButton.classList.remove('clicked');
-    }, 15000);
+    }, 1500);
 })
