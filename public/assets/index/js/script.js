@@ -53,7 +53,6 @@ uploadForm.onsubmit = async (e) => {
 
 contactForm.onsubmit = async (e) => {
     e.preventDefault();
-    sendMail.disabled = true;
     const formData = new FormData(contactForm);
     const data = new URLSearchParams(formData);
     const response = await fetch('/send-email', {
@@ -69,7 +68,6 @@ contactForm.onsubmit = async (e) => {
     } else {
         alert('Failed to send email.');
     }
-    sendMail.disabled = false;
 
 }
 
