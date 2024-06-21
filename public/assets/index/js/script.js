@@ -8,9 +8,16 @@ const textAreaDiv = document.querySelector('#textarea-div');
 const uploadForm = document.getElementById('upload-img');
 const contactForm = document.getElementById('contact-information');
 const convertButton = document.querySelector('#convert');
-const loadAnimate = document.querySelector('.loading');
+const convertLoadAnimate = document.querySelector('#convert-loading');
+const emailLoadAnimate = document.querySelector('#email-loading');
 const waitMessage = document.querySelector('#please-wait');
 const sendMail = document.querySelector('#send-email');
+// Toast
+const toast = document.querySelector(".toast");
+const toastIcon = document.querySelector(".toast-icon")
+const close = document.querySelector(".toast-close");
+const progress = document.querySelector(".progress");
+// End Toast
 
 inputFile.addEventListener('change', uploadImage);
 
@@ -35,7 +42,7 @@ dropArea.addEventListener('drop', function (e) {
 
 uploadForm.onsubmit = async (e) => {
     e.preventDefault();
-    loadAnimate.style.display = `flex`;
+    convertLoadAnimate.hidden = false;
     convertButton.hidden = true;
     waitMessage.hidden = false;
     const formData = new FormData(uploadForm);
@@ -44,7 +51,7 @@ uploadForm.onsubmit = async (e) => {
         body: formData,
     });
     const data = await response.text();
-    loadAnimate.style.display = `none`;
+    convertLoadAnimate.hidden = true;
     convertButton.hidden = false;
     waitMessage.hidden = true;
 
@@ -53,7 +60,9 @@ uploadForm.onsubmit = async (e) => {
 
 contactForm.onsubmit = async (e) => {
     e.preventDefault();
-    sendMail.disabled = true;
+    emailLoadAnimate.hidden = false;
+    sendMail.hidden = true;
+
     const formData = new FormData(contactForm);
     const data = new URLSearchParams(formData);
     const response = await fetch('/send-email', {
@@ -65,13 +74,39 @@ contactForm.onsubmit = async (e) => {
     });
     const result = await response.json();
     if (result.success) {
-        alert('Email sent successfully!');
+        // alert('Email sent successfully!');
+        // toast.style.display = `block`;
+        // setTimeout(() => {
+
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        // }, 100)
+
+        setTimeout(() => {
+            toast.classList.remove("active");
+        }, 5000)
+
+        setTimeout(() => {
+            progress.classList.remove("active");
+            toast.style.display = `none`;
+        }, 5300)
     } else {
         alert('Failed to send email.');
+        
     }
-    sendMail.disabled = false;
+    emailLoadAnimate.hidden = true;
+
+    sendMail.hidden = false;
 
 }
+close.addEventListener("click", () => {
+    toast.classList.remove("active");
+
+    setTimeout(() => {
+        progress.classList.remove("active");
+    }, 300)
+})
 
 // JS to improve visual appearance
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

@@ -50,57 +50,137 @@ a {
 }
 
 /* Loading */
-/* .loading {
-	display: flex;
-	height: 50px;
-	width: 50px;
-	background-color: #0b415a;
-	align-items: center;
-	justify-content: center;
-} */
 
-/*.dots span {
-	position: absolute;
-	border-radius: 50%;
-	height: 5px;
-	width: 5px;
-	background-color: white;
-	transform: rotate(calc(var(--i)*(360/16))) translateY(35px);
-} */
-
-.loading {
-	display: none;
+#convert-loading {
+	/* display: none; */
 	margin-top: 20px;
-	/* height: 150px;
-	width: 150px; */
 	align-items: center;
 	justify-content: center;
-	/* background: #4070f4; */
 }
 #please-wait {
 	font-size: 14px;
 	margin: 20px 0px;
 	max-width: 200px;
 }
-.dots span {
-	position: absolute;
-	border-radius: 50%;
-	height: 7px;
-	width: 7px;
-	background: purple;
-	transform: rotate(calc(var(--i) * (360deg / 14))) translateY(25px);
-	animation: animate 1.5s linear infinite;
-	animation-delay: calc(var(--i) * 0.1s);
-	opacity: 0;
+
+.loader {
+	width: 50px;
+	aspect-ratio: 1;
+	display: grid;
+	-webkit-mask: conic-gradient(from 15deg, #0000, #000);
+	animation: l26 1s infinite steps(12);
 }
-@keyframes animate {
-	0% {
-		opacity: 1;
-	}
+.loader,
+.loader:before,
+.loader:after {
+	background: radial-gradient(closest-side at 50% 12.5%, purple 96%, #0000) 50%
+			0/20% 80% repeat-y,
+		radial-gradient(closest-side at 12.5% 50%, purple 96%, #0000) 0 50%/80% 20%
+			repeat-x;
+}
+.loader:before,
+.loader:after {
+	content: '';
+	grid-area: 1/1;
+	transform: rotate(30deg);
+}
+.loader:after {
+	transform: rotate(60deg);
+}
+
+@keyframes l26 {
 	100% {
-		opacity: 0;
+		transform: rotate(1turn);
 	}
 }
+/* Toast */
+.toast {
+	z-index: 1;
+	position: fixed;
+	top: 25px;
+	right: 30px;
+	border-radius: 6px;
+	background: #fff;
+	padding: 20px 35px 20px 25px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+	border-left: 8px solid #0e9700;
+	overflow: hidden;
+	transform: translateX(calc(100% + 30px));
+	transition: all 0.5s cubic-bezier(0.68, -0.55, 0.25, 1.35);
+}
+.toast.active {
+	transform: translateX(0);
+}
+.toast-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.toast-check {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 35px;
+	width: 35px;
+	background-color: #0e9700;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 20px;
+}
+.message {
+	display: flex;
+	flex-direction: column;
+	margin: 0 20px;
+}
+.message-text {
+	font-size: 20px;
+	font-weight: 600;
+}
+.text-1 {
+	color: #333;
+}
+.text-2 {
+	color: #666;
+	font-weight: 400;
+	font-size: 16px;
+}
+.toast-close {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	padding: 5px;
+	cursor: pointer;
+	opacity: 0.7;
+}
+.toast-close:hover {
+	opacity: 1;
+}
+.progress {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 3px;
+	width: 100%;
+	background: #ddd;
+}
+.progress::before {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #0e9700;
+}
+.progress.active::before {
+	animation: progress 5s linear forwards;
+}
+@keyframes progress {
+	100% {
+		right: 100%;
+	}
+}
+/* /Toast */
 
 /* Navigation styles */
 nav,

@@ -38,112 +38,117 @@
 			</div>
 		</div>
 	</nav>
-	<div class="hero">
-		<label for="input-file" id="drag-area">
-			<div id="image-view">
-				<img src="/public/assets/images/upload-removebg-preview.png" alt="upload" />
-				<p>Drag and Drop or Click here <br />To upload image</p>
-				<br />
-				<span>Upload ANY images from Desktop</span>
-			</div>
-		</label>
-		<form id="upload-img" style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
-			<input type="file" name="xyz" accept="image/*" id="input-file" required hidden />
-			<section class="loading" hidden>
-				<div class="dots" hidden
-					style="height: 70px;width: 70px;display: flex;align-items: center; justify-content: center;">
-					<span style="--i:1;"></span>
-					<span style="--i:2;"></span>
-					<span style="--i:3;"></span>
-					<span style="--i:4;"></span>
-					<span style="--i:5;"></span>
-					<span style="--i:6;"></span>
-					<span style="--i:7;"></span>
-					<span style="--i:8;"></span>
-					<span style="--i:9;"></span>
-					<span style="--i:10;"></span>
-					<span style="--i:11;"></span>
-					<span style="--i:12;"></span>
-					<span style="--i:13;"></span>
-					<span style="--i:14;"></span>
-					<!-- <span style="--i:15;"></span>
-					<span style="--i:16;"></span> -->
+	<div id="main">
+		<!-- Toast -->
+		<div class="toast">
+			<div class="toast-content">
+				<i style="display: flex; align-items: center; justify-content: center;"
+					class="fas fa-check toast-icon"></i>
+				<div class="message">
+					<span class="message-text text-1">Success</span>
+					<span class="message-text text-2">Your changes has been saved</span>
 				</div>
-			</section>
-			<button id="convert" type="submit" class="button">
-				Convert
-			</button>
-			<p id="please-wait" style="text-align: center;" hidden><b>Please wait while we analyze your image!!</b></p>
-		</form>
-		<div id="textarea-div">
-			<div id="textarea-head">
-				<span>Output Text</span>
-				<div class="copy-button">
-					<div class="icon-cpy">
-						<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-copy"></i>
-						<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-check"></i>
-						<span>Copied!</span>
+			</div>
+			<span class="toast-close"><i class="fa-solid fa-close "></i></span>
+			<div class="progress"></div>
+		</div>
+		<!-- /Toast -->
+		<div class="hero">
+			<label for="input-file" id="drag-area">
+				<div id="image-view">
+					<img src="/public/assets/images/upload-removebg-preview.png" alt="upload" />
+					<p>Drag and Drop or Click here <br />To upload image</p>
+					<br />
+					<span>Upload ANY images from Desktop</span>
+				</div>
+			</label>
+			<form id="upload-img"
+				style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
+				<input type="file" name="xyz" accept="image/*" id="input-file" required hidden />
+				<section id="convert-loading" hidden>
+					<div class="loader"></div>
+				</section>
+				<button id="convert" type="submit" class="button">
+					Convert
+				</button>
+				<p id="please-wait" style="text-align: center;" hidden><b>Please wait while we analyze your image!!</b>
+				</p>
+			</form>
+			<div id="textarea-div">
+				<div id="textarea-head">
+					<span>Output Text</span>
+					<div class="copy-button">
+						<div class="icon-cpy">
+							<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-copy"></i>
+							<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-check"></i>
+							<span>Copied!</span>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div id="textarea-outer">
-				<textarea readonly name="Output textarea" id="textarea-hero"></textarea>
+				<div id="textarea-outer">
+					<textarea readonly name="Output textarea" id="textarea-hero"></textarea>
+				</div>
 			</div>
 		</div>
+		<section id="about">
+			<p class="section__text__p1">Get to know more</p>
+			<h2 class="title">About Us</h2>
+			<div class="about-details">
+				<div class="noob-img">
+					<img src="/public/assets/images/noobs.jpeg" alt="noobs" />
+				</div>
+				<div class="description">
+					<p>
+						This project has been made under the GTU Design Engineering
+						Curriculum. We are students of
+						<b><a class="vier"
+								href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara">Vadodara
+								Institute of Engineering and Research.
+							</a></b>
+						This project namely <b>ScanTextify</b> has been built with the goal
+						of extracting the texts from the images. Following are the team
+						members and their respective contributions :<br /><br />
+						<b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly
+						Assessment reports' and provided valuable feedbacks.<br /><br />
+						<b>Shrish Bhargav (front-row left)</b> : Made the frontend bit of
+						the project with <strong></strong> inputs in written canvas works.
+						<br /><br />
+						<b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe
+						engine that extracts texts from the images. <br /><br />
+						<b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend
+						and user authentication with a connection to the database. <br />
+					</p>
+				</div>
+			</div>
+		</section>
+		<section id="key-features">
+			<p class="section__text__p1">Explore our</p>
+			<h2 class="title">Key Features</h2>
+			<div class="video-section">
+				<video src="/public/assets/video/textify.mp4" id="video" muted autoplay></video>
+			</div>
+		</section>
+		<section id="contact">
+
+			<p class="section__text__p1">Get in Touch</p>
+			<h2 class="title">Contact Us</h2>
+			<div class="contact-info-upper-container">
+				<div class="contact-info-container">
+					<form id="contact-information">
+						<label for="email">Your Email:</label>
+						<input type="email" autocomplete="email" id="email" name="email" required /><br />
+						<label for="message">Message:</label>
+						<textarea id="message" name="message" required></textarea><br />
+						<section id="email-loading" style="margin: 10px;" hidden>
+							<div class="loader"></div>
+						</section>
+						<button id="send-email" type="submit" class="button">Send</button>
+					</form>
+				</div>
+			</div>
+		</section>
 	</div>
-	<section id="about">
-		<p class="section__text__p1">Get to know more</p>
-		<h2 class="title">About Us</h2>
-		<div class="about-details">
-			<div class="noob-img">
-				<img src="/public/assets/images/noobs.jpeg" alt="noobs" />
-			</div>
-			<div class="description">
-				<p>
-					This project has been made under the GTU Design Engineering
-					Curriculum. We are students of
-					<b><a class="vier"
-							href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara">Vadodara
-							Institute of Engineering and Research.
-						</a></b>
-					This project namely <b>ScanTextify</b> has been built with the goal
-					of extracting the texts from the images. Following are the team
-					members and their respective contributions :<br /><br />
-					<b>Rahul Pawar (front-row right)</b> : Handled the 'Monthly
-					Assessment reports' and provided valuable feedbacks.<br /><br />
-					<b>Shrish Bhargav (front-row left)</b> : Made the frontend bit of
-					the project with <strong></strong> inputs in written canvas works.
-					<br /><br />
-					<b>Rudra Patel (bottom-row left)</b> : Engineered the mainframe
-					engine that extracts texts from the images. <br /><br />
-					<b>Vaibhav Sharma (bottom-row left)</b> : Built the login backend
-					and user authentication with a connection to the database. <br />
-				</p>
-			</div>
-		</div>
-	</section>
-	<section id="key-features">
-		<p class="section__text__p1">Explore our</p>
-		<h2 class="title">Key Features</h2>
-		<div class="video-section">
-			<video src="/public/assets/video/textify.mp4" id="video" muted autoplay></video>
-		</div>
-	</section>
-	<section id="contact">
-		<p class="section__text__p1">Get in Touch</p>
-		<h2 class="title">Contact Us</h2>
-		<div class="contact-info-upper-container">
-			<div class="contact-info-container">
-				<form id="contact-information">
-					<label for="email">Your Email:</label>
-					<input type="email" autocomplete="email" id="email" name="email" required /><br />
-					<label for="message">Message:</label>
-					<textarea id="message" name="message" required></textarea><br />
-					<button id="send-email" type="submit" class="button">Send</button>
-				</form>
-			</div>
-		</div>
-	</section>
+
 	<footer>
 		<p class="section__text__p1">
 			Copyright&#169; 2024 ScanTextify. All Rights Reserved.
