@@ -98,7 +98,7 @@ a {
 	z-index: 1;
 	position: fixed;
 	top: 25px;
-	right: 30px;
+	right: 0px;
 	border-radius: 6px;
 	background: #fff;
 	padding: 20px 35px 20px 25px;
@@ -116,7 +116,7 @@ a {
 	justify-content: center;
 	align-items: center;
 }
-.toast-check {
+.toast-icon {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -129,11 +129,11 @@ a {
 }
 .message {
 	display: flex;
+	flex: 1;
 	flex-direction: column;
 	margin: 0 20px;
 }
 .message-text {
-	font-size: 20px;
 	font-weight: 600;
 }
 .text-1 {
@@ -142,7 +142,6 @@ a {
 .text-2 {
 	color: #666;
 	font-weight: 400;
-	font-size: 16px;
 }
 .toast-close {
 	position: absolute;
@@ -170,7 +169,7 @@ a {
 	right: 0;
 	height: 100%;
 	width: 100%;
-	background-color: #0e9700;
+	background-color: var(--progress-before-bg, #0e9700);
 }
 .progress.active::before {
 	animation: progress 5s linear forwards;

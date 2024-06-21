@@ -21,7 +21,7 @@ async function sendEmail(email, message) {
     try {
         await transporter.sendMail(formatted_mail);
     } catch (err) {
-        console.log(err);
+        throw (err);
     }
 }
 module.exports = sendEmail;

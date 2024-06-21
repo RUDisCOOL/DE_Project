@@ -17,6 +17,9 @@ const toast = document.querySelector(".toast");
 const toastIcon = document.querySelector(".toast-icon")
 const close = document.querySelector(".toast-close");
 const progress = document.querySelector(".progress");
+const text1 = document.querySelector(".text-1");
+const text2 = document.querySelector(".text-2");
+// const progressBar = document.querySelector(".progress::before");
 // End Toast
 
 inputFile.addEventListener('change', uploadImage);
@@ -76,12 +79,16 @@ contactForm.onsubmit = async (e) => {
     if (result.success) {
         // alert('Email sent successfully!');
         // toast.style.display = `block`;
-        // setTimeout(() => {
+        toastIcon.style.backgroundColor = `#0e9700`;
+        toast.style.borderLeft = `8px solid #0e9700`;
+        progress.style.setProperty('--progress-before-bg', '#0e9700');
+        toastIcon.classList.remove("fa-exclamation-triangle");
+        toastIcon.classList.add("fa-check");
+        text1.innerHTML = `Success`;
+        text2.innerHTML = `We have received your message successfully!`;
 
         toast.classList.add("active");
         progress.classList.add("active");
-
-        // }, 100)
 
         setTimeout(() => {
             toast.classList.remove("active");
@@ -89,14 +96,31 @@ contactForm.onsubmit = async (e) => {
 
         setTimeout(() => {
             progress.classList.remove("active");
-            toast.style.display = `none`;
+            // toast.style.display = `none`;
         }, 5300)
     } else {
-        alert('Failed to send email.');
-        
+        // alert('Failed to send email.');
+        toastIcon.style.backgroundColor = `#ff3333`;
+        toast.style.borderLeft = `8px solid #ff3333`;
+        progress.style.setProperty('--progress-before-bg', '#ff3333');
+        toastIcon.classList.remove("fa-check");
+        toastIcon.classList.add("fa-exclamation-triangle");
+        text1.innerHTML = `Error`;
+        text2.innerHTML = `Please try sending the message again!`;
+
+        toast.classList.add("active");
+        progress.classList.add("active");
+
+        setTimeout(() => {
+            toast.classList.remove("active");
+        }, 5000)
+
+        setTimeout(() => {
+            progress.classList.remove("active");
+            // toast.style.display = `none`;
+        }, 5300)
     }
     emailLoadAnimate.hidden = true;
-
     sendMail.hidden = false;
 
 }

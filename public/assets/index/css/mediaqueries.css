@@ -80,9 +80,12 @@
 	#hamburger-nav {
 		display: flex;
 	}
-	/* .hamburger-icon {
-		margin-left: 6rem;
-	} */
+	.text-1 {
+		font-size: 16px;
+	}
+	.text-2 {
+		font-size: 12px;
+	}
 	.menu-links {
 		margin-top: 2rem;
 		overflow: hidden;
@@ -108,6 +111,12 @@
 @media (min-width: 768px) and (max-width: 1024px) {
 	* {
 		font-size: 18px;
+	}
+	.text-1 {
+		font-size: 18px;
+	}
+	.text-2 {
+		font-size: 14px;
 	}
 	#please-wait {
 		font-size: 10px;
@@ -153,6 +162,12 @@
 @media (min-width: 1025px) {
 	* {
 		font-size: 18px;
+	}
+	.text-1 {
+		font-size: 18px;
+	}
+	.text-2 {
+		font-size: 14px;
 	}
 	#please-wait {
 		font-size: 10px;
