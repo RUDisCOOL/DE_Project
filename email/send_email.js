@@ -15,16 +15,13 @@ async function sendEmail(email, message) {
         from: process.env.SENDER_USER,
         to: 'superrudra1601@gmail.com', // Change to your email address
         subject: 'Message from the user',
-        text: `User's e-mail id: ${email}
-
-        Message: '${message}'
-        `,
+        text: `User's e-mail id: ${email}\nMessage: '${message}'`,
     };
 
-    try{
+    try {
         await transporter.sendMail(formatted_mail);
-    }catch(err){
-        console.log(err);
+    } catch (err) {
+        throw (err);
     }
 }
 module.exports = sendEmail;

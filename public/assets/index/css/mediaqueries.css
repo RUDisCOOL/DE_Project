@@ -7,7 +7,7 @@
 		width: 90%;
 		height: 200px;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 90%;
 	}
 	.nav-links a {
@@ -25,7 +25,7 @@
 	#drag-area {
 		width: 75%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 75%;
 	}
 	.nav-links a {
@@ -44,7 +44,7 @@
 	#drag-area {
 		width: 75%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 75%;
 	}
 	.nav-links a {
@@ -58,7 +58,7 @@
 	#drag-area {
 		width: 75%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 75%;
 	}
 	html,
@@ -80,9 +80,12 @@
 	#hamburger-nav {
 		display: flex;
 	}
-	/* .hamburger-icon {
-		margin-left: 6rem;
-	} */
+	.text-1 {
+		font-size: 16px;
+	}
+	.text-2 {
+		font-size: 12px;
+	}
 	.menu-links {
 		margin-top: 2rem;
 		overflow: hidden;
@@ -109,10 +112,19 @@
 	* {
 		font-size: 18px;
 	}
+	.text-1 {
+		font-size: 18px;
+	}
+	.text-2 {
+		font-size: 14px;
+	}
+	#please-wait {
+		font-size: 10px;
+	}
 	#drag-area {
 		width: 65%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 65%;
 	}
 	.login {
@@ -151,6 +163,15 @@
 	* {
 		font-size: 18px;
 	}
+	.text-1 {
+		font-size: 18px;
+	}
+	.text-2 {
+		font-size: 14px;
+	}
+	#please-wait {
+		font-size: 10px;
+	}
 	.hero {
 		padding: 62px;
 	}
@@ -187,9 +208,9 @@
 	#drag-area {
 		width: 35%;
 	}
-	#textarea-hero {
+	#textarea-div {
 		width: 35%;
-		height: 300px;
+		height: 400px;
 	}
 }
 
@@ -202,8 +223,8 @@
 	#drag-area {
 		height: 300px;
 	}
-	#textarea-hero {
-		height: 170px;
+	#textarea-div {
+		height: 300px;
 	}
 	.about-details {
 		flex-direction: column;
