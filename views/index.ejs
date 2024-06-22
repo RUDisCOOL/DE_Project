@@ -1,79 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="/public/assets/index/css/style.css"
+			type="text/css"
+		/>
+		<link
+			rel="stylesheet"
+			href="/public/assets/index/css/mediaqueries.css"
+			type="text/css"
+		/>
+		<link
+			rel="stylesheet"
+			href="/public/assets/fontawesome/css/fontawesome.css"
+		/>
+		<link rel="stylesheet" href="/public/assets/fontawesome/css/solid.css" />
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="/public/assets/index/css/style.css" type="text/css" />
-	<link rel="stylesheet" href="/public/assets/index/css/mediaqueries.css" type="text/css" />
-	<link rel="stylesheet" href="/public/assets/fontawesome/css/fontawesome.css">
-	<link rel="stylesheet" href="/public/assets/fontawesome/css/solid.css">
+		<title>Extract Text From Image</title>
+	</head>
 
-	<title>Extract Text From Image</title>
-</head>
-
-<body>
-	<nav id="desktop-nav">
-		<div class="logo">ScanTextify</div>
-		<div>
-			<ul class="nav-links">
-				<li><a href="#about">About Us</a></li>
-				<li><a href="#key-features">Key Features</a></li>
-				<li><a href="#contact">Contact Us</a></li>
-				<li id="log"><a target="_main" href="/login">Login</a></li>
-			</ul>
-		</div>
-	</nav>
-	<nav id="hamburger-nav">
-		<div class="logo">ScanTextify</div>
-		<div class="hamburger-menu">
-			<div class="hamburger-icon" onclick="toggleMenu(event)">
-				<span></span>
-				<span></span>
-				<span></span>
+	<body>
+		<nav id="desktop-nav">
+			<div class="logo">ScanTextify</div>
+			<div>
+				<ul class="nav-links">
+					<li><a href="#about">About Us</a></li>
+					<li><a href="#key-features">Key Features</a></li>
+					<li><a href="#contact">Contact Us</a></li>
+					<li id="log"><a target="_main" href="/login">Login</a></li>
+				</ul>
 			</div>
-			<div class="menu-links">
-				<li><a href="#about" onclick="toggleMenu()">About Us</a></li>
-				<li><a href="#key-features" onclick="toggleMenu()">Key Features</a></li>
-				<li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
-				<li><a href="/login" target="_main" onclick="toggleMenu()">Login</a></li>
-			</div>
-		</div>
-	</nav>
-	<div id="main">
-		<!-- Toast -->
-		<div class="toast" style="margin: 20px;">
-			<div class="toast-content">
-				<i style="display: flex; align-items: center; justify-content: center;"
-					class="fas fa-check toast-icon"></i>
-				<div class="message">
-					<span class="message-text text-1">Success</span>
-					<span class="message-text text-2">We have received your message successfully</span>
+		</nav>
+		<nav id="hamburger-nav">
+			<div class="logo">ScanTextify</div>
+			<div class="hamburger-menu">
+				<div class="hamburger-icon" onclick="toggleMenu(event)">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="menu-links">
+					<li><a href="#about" onclick="toggleMenu()">About Us</a></li>
+					<li>
+						<a href="#key-features" onclick="toggleMenu()">Key Features</a>
+					</li>
+					<li><a href="#contact" onclick="toggleMenu()">Contact Us</a></li>
+					<li>
+						<a href="/login" target="_main" onclick="toggleMenu()">Login</a>
+					</li>
 				</div>
 			</div>
-			<span class="toast-close"><i class="fa-solid fa-close "></i></span>
+		</nav>
+
+		<!-- Toast -->
+		<div class="toast" style="margin: 20px">
+			<div class="toast-content">
+				<i
+					style="display: flex; align-items: center; justify-content: center"
+					class="fas fa-check toast-icon"
+				></i>
+				<div class="message">
+					<span class="message-text text-1"></span>
+					<span class="message-text text-2"></span>
+				</div>
+			</div>
+			<span class="toast-close"><i class="fa-solid fa-close"></i></span>
 			<div class="progress"></div>
 		</div>
 		<!-- /Toast -->
 		<div class="hero">
 			<label for="input-file" id="drag-area">
 				<div id="image-view">
-					<img src="/public/assets/images/upload-removebg-preview.png" alt="upload" />
+					<img
+						src="/public/assets/images/upload-removebg-preview.png"
+						alt="upload"
+					/>
 					<p>Drag and Drop or Click here <br />To upload image</p>
 					<br />
 					<span>Upload ANY images from Desktop</span>
 				</div>
 			</label>
-			<form id="upload-img"
-				style="display: flex;align-items: center;justify-content: center;flex-direction: column;">
-				<input type="file" name="xyz" accept="image/*" id="input-file" required hidden />
+			<form
+				id="upload-img"
+				style="
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					flex-direction: column;
+				"
+			>
+				<input
+					type="file"
+					name="xyz"
+					accept="image/*"
+					id="input-file"
+					required
+					hidden
+				/>
 				<section id="convert-loading" hidden>
 					<div class="loader"></div>
 				</section>
-				<button id="convert" type="submit" class="button">
-					Convert
-				</button>
-				<p id="please-wait" style="text-align: center;" hidden><b>Please wait while we analyze your image!!</b>
+				<button id="convert" type="submit" class="button">Convert</button>
+				<p id="please-wait" style="text-align: center" hidden>
+					<b>Please wait while we analyze your image!!</b>
 				</p>
 			</form>
 			<div id="textarea-div">
@@ -81,14 +113,26 @@
 					<span>Output Text</span>
 					<div class="copy-button">
 						<div class="icon-cpy">
-							<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-copy"></i>
-							<i style="margin: 7px;" id="copy-icon" class="fa-solid fa-check"></i>
+							<i
+								style="margin: 7px"
+								id="copy-icon"
+								class="fa-solid fa-copy"
+							></i>
+							<i
+								style="margin: 7px"
+								id="copy-icon"
+								class="fa-solid fa-check"
+							></i>
 							<span>Copied!</span>
 						</div>
 					</div>
 				</div>
 				<div id="textarea-outer">
-					<textarea readonly name="Output textarea" id="textarea-hero"></textarea>
+					<textarea
+						readonly
+						name="Output textarea"
+						id="textarea-hero"
+					></textarea>
 				</div>
 			</div>
 		</div>
@@ -103,10 +147,13 @@
 					<p>
 						This project has been made under the GTU Design Engineering
 						Curriculum. We are students of
-						<b><a class="vier"
-								href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara">Vadodara
-								Institute of Engineering and Research.
-							</a></b>
+						<b
+							><a
+								class="vier"
+								href="https://collegedunia.com/college/28877-vadodara-institute-of-engineering-vadodara"
+								>Vadodara Institute of Engineering and Research.
+							</a>
+						</b>
 						This project namely <b>ScanTextify</b> has been built with the goal
 						of extracting the texts from the images. Following are the team
 						members and their respective contributions :<br /><br />
@@ -127,21 +174,31 @@
 			<p class="section__text__p1">Explore our</p>
 			<h2 class="title">Key Features</h2>
 			<div class="video-section">
-				<video src="/public/assets/video/textify.mp4" id="video" muted autoplay></video>
+				<video
+					src="/public/assets/video/textify.mp4"
+					id="video"
+					muted
+					autoplay
+				></video>
 			</div>
 		</section>
 		<section id="contact">
-
 			<p class="section__text__p1">Get in Touch</p>
 			<h2 class="title">Contact Us</h2>
 			<div class="contact-info-upper-container">
 				<div class="contact-info-container">
 					<form id="contact-information">
 						<label for="email">Your Email:</label>
-						<input type="email" autocomplete="email" id="email" name="email" required /><br />
+						<input
+							type="email"
+							autocomplete="email"
+							id="email"
+							name="email"
+							required
+						/><br />
 						<label for="message">Message:</label>
 						<textarea id="message" name="message" required></textarea><br />
-						<section id="email-loading" style="margin: 16px;" hidden>
+						<section id="email-loading" style="margin: 16px" hidden>
 							<div class="loader"></div>
 						</section>
 						<button id="send-email" type="submit" class="button">Send</button>
@@ -149,14 +206,12 @@
 				</div>
 			</div>
 		</section>
-	</div>
 
-	<footer>
-		<p class="section__text__p1">
-			Copyright&#169; 2024 ScanTextify. All Rights Reserved.
-		</p>
-	</footer>
-	<script src="/public/assets/index/js/script.js"></script>
-</body>
-
+		<footer>
+			<p class="section__text__p1">
+				Copyright&#169; 2024 ScanTextify. All Rights Reserved.
+			</p>
+		</footer>
+		<script src="/public/assets/index/js/script.js"></script>
+	</body>
 </html>
