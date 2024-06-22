@@ -1,46 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/public/assets/login/css/style.css" />
+		<link
+			rel="stylesheet"
+			href="/public/assets/fontawesome/css/fontawesome.css"
+		/>
+		<link rel="stylesheet" href="/public/assets/fontawesome/css/solid.css" />
+		<title>Login</title>
+	</head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="/public/assets/login/css/style.css" />
-	<title>Sign in</title>
-</head>
-
-<body>
-	<div class="wrapper">
-		<div class="form-container sign-in">
-			<form action="/sendForLogin" method="POST">
-				<h2>login</h2>
-				<div class="form-group">
-					<input placeholder="" type="text" id="username" name="username" autocomplete="username" required />
-					<i class="fas fa-user"></i>
-					<label for="username">username/e-mail</label>
-				</div>
-				<div class="form-group">
-					<input placeholder="" type="password" id="password" name="password" autocomplete="current-password" required />
-					<i class="fas fa-lock"></i>
-					<label for="password">password</label>
-				</div>
-				<div class="forgot-pass">
-					<a href="#">forgot password?</a>
-				</div>
-				<div class="error">
-					<p><%=error%></p>
-				</div>
-				<button type="submit" class="btn">login</button>
-				<div class="link">
-					<p>
-						Don't have an account?<a href="signup" target="_main" class="signup-link">
-							sign up</a>
-					</p>
-				</div>
-			</form>
+	<body>
+		<div class="wrapper">
+			<div class="form-container sign-up">
+				<form id="signup-form">
+					<h2>sign up</h2>
+					<div class="form-group">
+						<input
+							placeholder=""
+							type="text"
+							class="username"
+							name="username"
+							autocomplete="off"
+							required
+						/>
+						<label for="username">username</label>
+						<i class="fas fa-user"></i>
+					</div>
+					<div class="form-group">
+						<input
+							placeholder=""
+							type="email"
+							id="email"
+							name="email"
+							autocomplete="off"
+							required
+						/>
+						<label for="email">email</label>
+						<i class="fas fa-at"></i>
+					</div>
+					<div class="form-group">
+						<input
+							placeholder=""
+							type="password"
+							class="password"
+							name="password"
+							autocomplete="new-password"
+							required
+						/>
+						<label for="password">password</label>
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="form-group">
+						<input
+							placeholder=""
+							type="password"
+							id="confirmPassword"
+							name="confirmPassword"
+							autocomplete="new-password"
+							required
+						/>
+						<label for="confirmPassword">confirm password</label>
+						<i class="fas fa-lock"></i>
+					</div>
+					<!-- <div class="error">
+						<p><%=error%></p>
+					</div> -->
+					<button type="submit" class="btn">sign up</button>
+					<div class="link">
+						<p>
+							You already have an account?
+							<a href="#" class="signin-link">login</a>
+						</p>
+					</div>
+				</form>
+			</div>
+			<div class="form-container sign-in">
+				<form id="login-form">
+					<h2>login</h2>
+					<div class="form-group">
+						<input
+							placeholder=""
+							type="text"
+							class="username"
+							name="username"
+							autocomplete="username"
+							required
+						/>
+						<i class="fas fa-user"></i>
+						<label for="username">username/e-mail</label>
+					</div>
+					<div class="form-group">
+						<input
+							placeholder=""
+							type="password"
+							class="password"
+							name="password"
+							autocomplete="current-password"
+							required
+						/>
+						<i class="fas fa-lock"></i>
+						<label for="password">password</label>
+					</div>
+					<div class="forgot-pass">
+						<a href="#">forgot password?</a>
+					</div>
+					<!-- <div class="error">
+						<p><%=error%></p>
+					</div> -->
+					<button type="submit" class="btn">login</button>
+					<div class="link">
+						<p>
+							Don't have an account?
+							<a href="#" class="signup-link">sign up</a>
+						</p>
+					</div>
+				</form>
+			</div>
 		</div>
-	</div>
-	<script src="/public/assets/login/js/main.js" crossorigin="anonymous"></script>
-</body>
-
+		<script
+			src="/public/assets/login/js/main.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
 </html>

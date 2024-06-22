@@ -65,7 +65,6 @@ contactForm.onsubmit = async (e) => {
     e.preventDefault();
     emailLoadAnimate.hidden = false;
     sendMail.hidden = true;
-
     const formData = new FormData(contactForm);
     const data = new URLSearchParams(formData);
     const response = await fetch('/send-email', {
@@ -77,8 +76,6 @@ contactForm.onsubmit = async (e) => {
     });
     const result = await response.json();
     if (result.success) {
-        // alert('Email sent successfully!');
-        // toast.style.display = `block`;
         toastIcon.style.backgroundColor = `#0e9700`;
         toast.style.borderLeft = `8px solid #0e9700`;
         progress.style.setProperty('--progress-before-bg', '#0e9700');
@@ -96,10 +93,8 @@ contactForm.onsubmit = async (e) => {
 
         setTimeout(() => {
             progress.classList.remove("active");
-            // toast.style.display = `none`;
         }, 5300)
     } else {
-        // alert('Failed to send email.');
         toastIcon.style.backgroundColor = `#ff3333`;
         toast.style.borderLeft = `8px solid #ff3333`;
         progress.style.setProperty('--progress-before-bg', '#ff3333');
@@ -117,7 +112,6 @@ contactForm.onsubmit = async (e) => {
 
         setTimeout(() => {
             progress.classList.remove("active");
-            // toast.style.display = `none`;
         }, 5300)
     }
     emailLoadAnimate.hidden = true;
