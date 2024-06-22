@@ -28,9 +28,9 @@ async function create_table() {
 	);
 }
 
-function tocheckusername(common_data) {
+function tocheckusername(username) {
 	let checkdata = new Promise((resolve) => {
-		let sql = `SELECT user_name FROM authentication WHERE user_name = "${common_data}";`;
+		let sql = `SELECT user_name FROM authentication WHERE user_name = "${username}";`;
 		pool.execute(sql, (err, result) => {
 			if (err) {
 				console.log(err);
@@ -46,18 +46,15 @@ function tocheckusername(common_data) {
 	return checkdata;
 }
 
-function tocheckpassword(signup_Data) {
+function tocheckpassword(username, password) {
 	let checkForPassword = new Promise((resolve) => {
-		let sql = `SELECT user_password FROM authentication WHERE user_name = "${signup_Data.username}";`;
+		let sql = `SELECT user_password FROM authentication WHERE user_name = "${username}";`;
 		pool.execute(sql, (err, result) => {
 			if (err) {
 				console.log(err);
 			} else {
 				if (result.length > 0) {
-					let check = checkHashPassword(
-						signup_Data.password,
-						result[0].user_password
-					);
+					let check = checkHashPassword(password, result[0].user_password);
 					resolve(check);
 				} else {
 					resolve(false);
@@ -69,15 +66,15 @@ function tocheckpassword(signup_Data) {
 }
 
 async function datatosql(signup_Data, callback) {
-	let hashedPassword = await hashPassword(signup_Data.password);
+	let hashedPassword = await hashPassword(signup_Data.password_signup);
 	let sql = `INSERT INTO authentication(user_name,user_email,user_password) 
     VALUES(?,?,?);`;
-	let check = await tocheckusername(signup_Data.username);
+	let check = await tocheckusername(signup_Data.username_signup);
 	if (check === false) {
-		if (signup_Data.password === signup_Data.confirmPassword) {
+		if (signup_Data.password_signup === signup_Data.confirm_password) {
 			pool.execute(
 				sql,
-				[signup_Data.username, signup_Data.email, hashedPassword],
+				[signup_Data.username_signup, signup_Data.email, hashedPassword],
 				(err, result) => {
 					if (err) {
 						console.log(err);
@@ -97,8 +94,11 @@ async function datatosql(signup_Data, callback) {
 }
 
 async function checkDataForLogin(login_Data, callback) {
-	let checkUsername = await tocheckusername(login_Data.username);
-	let checkPassword = await tocheckpassword(login_Data);
+	let checkUsername = await tocheckusername(login_Data.username_login);
+	let checkPassword = await tocheckpassword(
+		login_Data.username_login,
+		login_Data.password_login
+	);
 	if (checkUsername === true) {
 		if (checkPassword === true) {
 			callback(null, 'Login successful');
