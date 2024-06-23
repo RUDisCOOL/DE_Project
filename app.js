@@ -1,5 +1,7 @@
 // APP
 const express = require('express');
+const session =  require('express-session');
+const MySQLStore = require('express-mysql-session')(session);
 const { engine } = require('express/lib/application');
 const res = require('express/lib/response');
 const app = express();
@@ -16,6 +18,22 @@ const sendEmail = require('./email/send_email');
 (async () => {
 	await dbconnect.create_table();
 })();
+
+const connection = {
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+}
+
+const session_store = new MySQLStore(connection);
+session_store.onReady().then(() => {
+	// MySQL session store ready for use.
+	console.log('MySQLStore ready');
+}).catch(error => {
+	// Something went wrong.
+	console.error(error);
+});
 
 app.use('/public', express.static('./public'));
 
@@ -42,6 +60,14 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage }).single('xyz');
 
 app.set('view engine', 'ejs');
+
+app.use(session({
+    secret: "key for login",
+    resave: false,
+    saveUninitialized: false,
+    store: session_store,
+}))
+
 app.use(express.urlencoded({ extended: true }));
 app.use('/', routers);
 
@@ -62,6 +88,8 @@ app.post('/sendForLogin', async (req, res) => {
 	try {
 		let result = await dbconnect.add_data_for_login(login_Data);
 		console.log(result);
+        req.session.UserName = login_Data.username_login;
+        req.session.is_auth = true;
 		res.json({ success: true });
 	} catch (error) {
 		console.error(error);
