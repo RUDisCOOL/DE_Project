@@ -60,7 +60,7 @@ a {
 #please-wait {
 	font-size: 14px;
 	margin: 20px 0px;
-	max-width: 200px;
+	/* max-width: 150px; */
 }
 
 .loader {
@@ -68,6 +68,7 @@ a {
 	aspect-ratio: 1;
 	display: grid;
 	-webkit-mask: conic-gradient(from 15deg, #0000, #000);
+	mask: conic-gradient(from 15deg, #0000, #000);
 	animation: l26 1s infinite steps(12);
 }
 .loader,
@@ -100,7 +101,7 @@ a {
 	top: 25px;
 	right: 0px;
 	border-radius: 6px;
-	background: #fff;
+	background: #f5f5f5;
 	padding: 20px 35px 20px 25px;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 	border-left: 8px solid #0e9700;
@@ -322,10 +323,11 @@ a:hover {
 }
 
 /* Hero section styles */
+
 .hero {
 	display: flex;
 	width: 100%;
-	min-height: 50vh;
+	min-height: fit-content;
 	align-items: center;
 	justify-content: space-evenly;
 }
@@ -367,6 +369,9 @@ a:hover {
 #input-file {
 	width: max-content;
 	height: max-content;
+}
+#upload-img {
+	flex: 0.7;
 }
 #textarea-div {
 	padding: 10px;
@@ -453,7 +458,10 @@ button:hover {
 }
 
 .description {
+	display: flex;
 	text-align: justify;
+	align-items: center;
+	justify-content: center;
 	padding: 15px;
 	width: 45%;
 }
