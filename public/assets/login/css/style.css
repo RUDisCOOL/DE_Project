@@ -64,7 +64,7 @@ body {
 .wrapper .form-container form .form-group {
 	position: relative;
 	width: 32rem;
-	margin: 3rem 0;
+	margin: 2rem 0;
 }
 
 .wrapper .form-container form .form-group i,
@@ -236,3 +236,12 @@ button a {
 		z-index: 1;
 	}
 }
+
+.error {
+	font-size: 1.4rem;
+	font-weight: 600;
+}
+
+/* Toast */
+
+/* /Toast */

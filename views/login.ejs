@@ -23,11 +23,12 @@
 							placeholder=""
 							type="text"
 							class="username"
-							name="username"
+							id="username_signup"
+							name="username_signup"
 							autocomplete="off"
 							required
 						/>
-						<label for="username">username</label>
+						<label for="username_signup">username</label>
 						<i class="fas fa-user"></i>
 					</div>
 					<div class="form-group">
@@ -47,28 +48,40 @@
 							placeholder=""
 							type="password"
 							class="password"
-							name="password"
+							id="password_signup"
+							name="password_signup"
 							autocomplete="new-password"
 							required
 						/>
-						<label for="password">password</label>
+						<label for="password_signup">password</label>
 						<i class="fas fa-lock"></i>
 					</div>
 					<div class="form-group">
 						<input
 							placeholder=""
 							type="password"
-							id="confirmPassword"
-							name="confirmPassword"
+							id="confirm_password"
+							name="confirm_password"
 							autocomplete="new-password"
 							required
 						/>
-						<label for="confirmPassword">confirm password</label>
+						<label for="confirm_password">confirm password</label>
 						<i class="fas fa-lock"></i>
 					</div>
-					<!-- <div class="error">
-						<p><%=error%></p>
-					</div> -->
+					<div
+						class="error"
+						id="error-signup"
+						style="
+							height: fit-content;
+							display: block;
+							text-align: center;
+							align-content: center;
+							padding: 5px 0px;
+						"
+					>
+						<i id="signup-icon" class="fa-solid"></i>
+						<p style="display: inline" id="signup-error-p"></p>
+					</div>
 					<button type="submit" class="btn">sign up</button>
 					<div class="link">
 						<p>
@@ -86,31 +99,44 @@
 							placeholder=""
 							type="text"
 							class="username"
-							name="username"
+							id="username_login"
+							name="username_login"
 							autocomplete="username"
 							required
 						/>
 						<i class="fas fa-user"></i>
-						<label for="username">username/e-mail</label>
+						<label for="username_login">username/e-mail</label>
 					</div>
 					<div class="form-group">
 						<input
 							placeholder=""
 							type="password"
 							class="password"
-							name="password"
+							id="password_login"
+							name="password_login"
 							autocomplete="current-password"
 							required
 						/>
 						<i class="fas fa-lock"></i>
-						<label for="password">password</label>
+						<label for="password_login">password</label>
 					</div>
 					<div class="forgot-pass">
 						<a href="#">forgot password?</a>
 					</div>
-					<!-- <div class="error">
-						<p><%=error%></p>
-					</div> -->
+					<div
+						class="error"
+						id="error-login"
+						style="
+							height: fit-content;
+							display: block;
+							text-align: center;
+							align-content: center;
+							padding: 5px 0px;
+						"
+					>
+						<i id="login-icon" class="fa-solid"></i>
+						<p style="display: inline" id="login-error-p"></p>
+					</div>
 					<button type="submit" class="btn">login</button>
 					<div class="link">
 						<p>

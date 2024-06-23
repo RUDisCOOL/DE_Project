@@ -13,7 +13,10 @@ const dbconnect = require('./database/db');
 const { error } = require('console');
 const sendEmail = require('./email/send_email');
 
-dbconnect.create_table();
+(async () => {
+	await dbconnect.create_table();
+})();
+
 app.use('/public', express.static('./public'));
 
 async function getTextFromImage(data) {
