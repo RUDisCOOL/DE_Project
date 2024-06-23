@@ -4,7 +4,13 @@ const bodyParser = require('body-parser');
 
 
 router.get('/', (req, res) => {
-	res.render('index', { data: '' });
+    if (req.session.is_auth) {
+        const UserName = req.session.UserName;
+        console.log(UserName);
+        res.render('index', { UserName: UserName });
+    } else {
+        res.render('index', { UserName: '' });
+    }
 });
 
 router.get('/login', (req, res) => {
