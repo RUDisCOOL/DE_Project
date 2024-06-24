@@ -26,9 +26,11 @@ a {
 	background-color: #999;
 	color: #eee;
 	transition: all 0.5s cubic-bezier(0.68, -0.35, 0.265, 1.35),
-		box-shadow 0.3s ease;
+		box-shadow 0.3s ease, opacity 0.3s ease;
+	opacity: 0.8;
 }
 .copy-button:hover {
+	opacity: 1;
 	cursor: pointer;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
@@ -56,19 +58,20 @@ a {
 
 /* Profile Photo */
 .profile-photo {
-	width: 36px;
-	height: 36px;
+	width: 40px;
+	height: 40px;
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #999;
 	color: #fff;
-	opacity: 0.5;
-	transition: box-shadow 0.3s ease, opacity 0.3s ease;
+	opacity: 0.7;
+	transition: box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 .profile-photo:hover {
 	opacity: 1;
+	transform: translateY(-2px);
 	cursor: pointer;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
@@ -209,17 +212,17 @@ a {
 nav,
 .nav-links {
 	display: flex;
-	/* padding: auto; */
 }
 
 nav {
 	justify-content: space-around;
-	gap: 30%;
 	align-items: center;
 	height: 17vh;
 }
 
 .nav-links {
+	flex: 0.8;
+	justify-content: right;
 	gap: 2rem;
 	list-style: none;
 	font-size: 1.2rem;
@@ -233,19 +236,27 @@ nav {
 }
 
 #log a {
-	padding: 6px 10px;
-	background-color: purple;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	font-weight: 600;
 	text-decoration: none;
 	color: white;
-	border-radius: 7px;
-	transition: background-color 0.3s, color 0.3s, padding 0.3s;
 }
-
-#log a:hover {
-	padding: 8px 12px;
+#log {
+	opacity: 0.9;
 	background-color: purple;
-	color: white;
-	border: 2px solid black;
+	border-radius: 7px;
+	height: 36px;
+	width: 72px;
+	transition: all 0.3s ease;
+}
+#log:hover {
+	opacity: 1;
+	transform: translateY(-2px);
+	box-shadow: 0px 2px 8px rgba(128, 0, 128, 20);
 }
 
 a {
@@ -444,7 +455,7 @@ button {
 	padding: 6px 10px;
 	margin: 20px;
 	color: purple;
-	border: 2px solid black;
+	border: 2px solid purple;
 	background-color: white;
 	transition: background-color 0.3s, color 0.3s;
 	cursor: pointer;

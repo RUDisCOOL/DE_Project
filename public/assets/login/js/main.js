@@ -37,19 +37,27 @@ loginForm.onsubmit = async (e) => {
 	const result = await response.json();
 	errorDivLogin.style.display = `block`;
 	if (result.success) {
-		loginIcon.classList.remove(`fa-exclamation-circle`);
-		loginIcon.classList.add(`fa-check-circle`);
-		loginErrorP.innerHTML = `You have logged in successfully!`;
-		errorDivLogin.style.color = `#0e9700`;
-
+		errorDivLogin.classList.remove(`after`);
 		setTimeout(() => {
-			window.location.href = '/';
-		}, 1000);
+			loginIcon.classList.remove(`fa-exclamation-circle`);
+			loginIcon.classList.add(`fa-check-circle`);
+			loginErrorP.innerHTML = `You have logged in successfully!`;
+			errorDivLogin.style.color = `#0e9700`;
+			errorDivLogin.classList.add(`after`);
+			setTimeout(() => {
+				errorDivLogin.classList.remove(`after`);
+				setTimeout(() => (window.location.href = '/'), 300);
+			}, 1000);
+		}, 300);
 	} else {
-		loginIcon.classList.remove(`fa-check-circle`);
-		loginIcon.classList.add(`fa-exclamation-circle`);
-		loginErrorP.innerHTML = `${result.error}`;
-		errorDivLogin.style.color = `#ff3333`;
+		errorDivLogin.classList.remove(`after`);
+		setTimeout(() => {
+			loginIcon.classList.remove(`fa-check-circle`);
+			loginIcon.classList.add(`fa-exclamation-circle`);
+			loginErrorP.innerHTML = `${result.error}`;
+			errorDivLogin.style.color = `#ff3333`;
+			errorDivLogin.classList.add(`after`);
+		}, 300);
 	}
 };
 
@@ -68,18 +76,26 @@ signupForm.onsubmit = async (e) => {
 	});
 	const result = await response.json();
 	if (result.success) {
-		signupIcon.classList.remove(`fa-exclamation-circle`);
-		signupIcon.classList.add(`fa-check-circle`);
-		signupErrorP.innerHTML = `You have logged in successfully!`;
-		errorDivSignup.style.color = `#0e9700`;
-
+		errorDivSignup.classList.remove(`after`);
 		setTimeout(() => {
-			window.location.href = '/';
-		}, 1000);
+			signupIcon.classList.remove(`fa-exclamation-circle`);
+			signupIcon.classList.add(`fa-check-circle`);
+			signupErrorP.innerHTML = `You have logged in successfully!`;
+			errorDivSignup.style.color = `#0e9700`;
+			errorDivSignup.classList.add(`after`);
+			setTimeout(() => {
+				errorDivSignup.classList.remove(`after`);
+				setTimeout(() => (window.location.href = '/'), 300);
+			}, 1000);
+		}, 300);
 	} else {
-		signupIcon.classList.remove(`fa-check-circle`);
-		signupIcon.classList.add(`fa-exclamation-circle`);
-		signupErrorP.innerHTML = `${result.error}`;
-		errorDivSignup.style.color = `#ff3333`;
+		errorDivSignup.classList.remove(`after`);
+		setTimeout(() => {
+			signupIcon.classList.remove(`fa-check-circle`);
+			signupIcon.classList.add(`fa-exclamation-circle`);
+			signupErrorP.innerHTML = `${result.error}`;
+			errorDivSignup.style.color = `#ff3333`;
+			errorDivSignup.classList.add(`after`);
+		}, 300);
 	}
 };
