@@ -140,5 +140,5 @@ module.exports = {
 	add_data_for_login,
 	tocheckusername,
 	datatosql,
-    pool,
+	pool,
 };

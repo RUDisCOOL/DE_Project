@@ -25,7 +25,12 @@ a {
 	border-radius: 15px;
 	background-color: #999;
 	color: #eee;
-	transition: all 0.5s cubic-bezier(0.68, -0.35, 0.265, 1.35);
+	transition: all 0.5s cubic-bezier(0.68, -0.35, 0.265, 1.35),
+		box-shadow 0.3s ease;
+}
+.copy-button:hover {
+	cursor: pointer;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 .icon-cpy {
 	display: flex;
@@ -49,6 +54,24 @@ a {
 	right: 0px;
 }
 
+/* Profile Photo */
+.profile-photo {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #999;
+	color: #fff;
+	opacity: 0.5;
+	transition: box-shadow 0.3s ease, opacity 0.3s ease;
+}
+.profile-photo:hover {
+	opacity: 1;
+	cursor: pointer;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
 /* Loading */
 
 #convert-loading {
@@ -186,11 +209,12 @@ a {
 nav,
 .nav-links {
 	display: flex;
-	padding: auto;
+	/* padding: auto; */
 }
 
 nav {
 	justify-content: space-around;
+	gap: 30%;
 	align-items: center;
 	height: 17vh;
 }
@@ -200,6 +224,12 @@ nav {
 	list-style: none;
 	font-size: 1.2rem;
 	font-weight: 600;
+}
+
+.nav-links li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 #log a {

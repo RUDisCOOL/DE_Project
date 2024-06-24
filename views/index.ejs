@@ -30,7 +30,13 @@
 					<li><a href="#about">About Us</a></li>
 					<li><a href="#key-features">Key Features</a></li>
 					<li><a href="#contact">Contact Us</a></li>
+					<% if (!UserName) { %>
 					<li id="log"><a target="_main" href="/login">Login</a></li>
+					<% } else {%>
+					<div class="profile-photo">
+						<i class="fa-solid fa-user" style="font-size: 20px"></i>
+					</div>
+					<%}%>
 				</ul>
 			</div>
 		</nav>

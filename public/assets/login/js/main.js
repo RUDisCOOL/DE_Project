@@ -44,7 +44,7 @@ loginForm.onsubmit = async (e) => {
 
 		setTimeout(() => {
 			window.location.href = '/';
-		}, 3300);
+		}, 1000);
 	} else {
 		loginIcon.classList.remove(`fa-check-circle`);
 		loginIcon.classList.add(`fa-exclamation-circle`);
@@ -75,7 +75,7 @@ signupForm.onsubmit = async (e) => {
 
 		setTimeout(() => {
 			window.location.href = '/';
-		}, 3300);
+		}, 1000);
 	} else {
 		signupIcon.classList.remove(`fa-check-circle`);
 		signupIcon.classList.add(`fa-exclamation-circle`);
