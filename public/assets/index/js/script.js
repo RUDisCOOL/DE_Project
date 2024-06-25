@@ -140,7 +140,7 @@ function toggleMenu(e) {
 	const icon = document.querySelector('.hamburger-icon');
 	menu.classList.toggle('open');
 	icon.classList.toggle('open');
-	menu.style.width = '50vw';
+	menu.style.width = '200px';
 	menu.style.color = 'black';
 }
 

@@ -34,8 +34,24 @@
 			<% if (!UserName) { %>
 			<div id="log"><a target="_main" href="/login">Login</a></div>
 			<% } else {%>
-			<div class="profile-photo">
-				<i class="fa-solid fa-user" style="font-size: 24px"></i>
+			<div>
+				<div class="profile-photo">
+					<i class="fa-solid fa-user" style="font-size: 20px"></i>
+				</div>
+				<div id="profile-drop-down">
+					<ul>
+						<li>
+							<i class="fa-solid fa-user-circle"></i>
+							<%=UserName %>
+						</li>
+					</ul>
+
+					<hr />
+					<div id="logout">
+						<i class="fa-solid fa-sign-out"></i>
+						Logout
+					</div>
+				</div>
 			</div>
 			<%}%>
 		</nav>
