@@ -22,6 +22,38 @@ const text2 = document.querySelector('.text-2');
 // const progressBar = document.querySelector(".progress::before");
 // End Toast
 
+// Profile
+const profileMenu = document.querySelector('#profile-drop-down');
+const profilePhoto = document.querySelector('.profile-photo');
+const logoutButton = document.querySelector('#logout');
+if (profilePhoto) {
+	profilePhoto.onclick = async (e) => {
+		profileMenu.classList.toggle('active');
+	};
+}
+if (logoutButton) {
+	logoutButton.onclick = async (e) => {
+		e.preventDefault();
+		try {
+			const response = await fetch('/logout', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+			const result = await response.json();
+			if (!result.success) {
+				throw new Error('Logout failed');
+			} else {
+				console.log('Logged out Successfully!');
+				window.location.reload(true);
+			}
+		} catch (error) {
+			console.log('Error:', error);
+		}
+	};
+}
+
 inputFile.addEventListener('change', uploadImage);
 
 function uploadImage() {

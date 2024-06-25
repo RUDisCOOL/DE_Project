@@ -71,21 +71,32 @@ a {
 }
 .profile-photo:hover {
 	opacity: 1;
-	transform: translateY(-2px);
 	cursor: pointer;
 	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 /* Profile Drop Down Menu */
 #profile-drop-down {
-	padding: 15px 20px;
+	max-height: 0px;
+	overflow: hidden;
+	visibility: hidden;
+	padding: 0px 20px;
+	display: flex;
+	flex-direction: column;
 	position: absolute;
 	border-radius: 10px;
 	box-shadow: 0 0 8px rgb(0, 0, 0, 0.3);
 	background-color: #fff;
-	width: 200px;
-	transform: translateY(20px);
+	min-width: 200px;
 	right: 25px;
 	z-index: 1;
+	transform: translateY(8px);
+	transition: all 0.5s ease;
+}
+#profile-drop-down.active {
+	visibility: visible;
+	transform: translateY(20px);
+	max-height: 200px;
+	padding: 15px 20px;
 }
 #profile-drop-down ul i {
 	font-size: 24px;
@@ -99,6 +110,7 @@ a {
 	list-style: none;
 	font-size: 16px;
 	font-weight: 600;
+	transition: all 0.2s;
 }
 #profile-drop-down hr {
 	margin: 15px 0px;
@@ -107,7 +119,9 @@ a {
 	height: 2px;
 }
 #logout {
-	padding: 3px;
+	align-self: center;
+	width: fit-content;
+	padding: 5px;
 	border-radius: 5px;
 	display: flex;
 	align-items: center;
@@ -118,8 +132,7 @@ a {
 	transition: all 0.3s ease;
 }
 #logout:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 0 8px rgb(0, 0, 0, 0.3);
+	box-shadow: 0 0 4px rgb(0, 0, 0, 0.3);
 	cursor: pointer;
 }
 #logout i {
@@ -307,8 +320,7 @@ nav {
 }
 #log:hover {
 	opacity: 1;
-	transform: translateY(-2px);
-	box-shadow: 0px 2px 8px rgba(128, 0, 128, 20);
+	box-shadow: 0px 0px 8px rgba(128, 0, 128, 20);
 }
 
 a {

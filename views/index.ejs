@@ -31,7 +31,7 @@
 				<li><a href="#contact">Contact Us</a></li>
 			</ul>
 
-			<% if (!UserName) { %>
+			<% if (!isAuth) { %>
 			<div id="log"><a target="_main" href="/login">Login</a></div>
 			<% } else {%>
 			<div>
@@ -42,7 +42,11 @@
 					<ul>
 						<li>
 							<i class="fa-solid fa-user-circle"></i>
-							<%=UserName %>
+							<%=userName %>
+						</li>
+						<li>
+							<i class="fa-solid fa-envelope"></i>
+							<%=email %>
 						</li>
 					</ul>
 

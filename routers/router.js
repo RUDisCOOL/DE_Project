@@ -3,12 +3,13 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 
 router.get('/', (req, res) => {
+	const is_auth = req.session.is_auth;
 	if (req.session.is_auth) {
 		const UserName = req.session.UserName;
-        const email = req.session.email;
-		res.render('index', { UserName: UserName, email: email });
+		const email = req.session.email;
+		res.render('index', { userName: UserName, email: email, isAuth: is_auth });
 	} else {
-		res.render('index', { UserName: '' });
+		res.render('index', { isAuth: is_auth });
 	}
 });
 

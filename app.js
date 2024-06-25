@@ -92,9 +92,9 @@ app.post('/sendForLogin', async (req, res) => {
 	let login_Data = req.body;
 	try {
 		let result = await dbconnect.add_data_for_login(login_Data);
-        console.log(result);
+		console.log(result);
 		let email = await dbconnect.togetmail(login_Data.username_login);
-        req.session.email = email[0].user_email;
+		req.session.email = email[0].user_email;
 		req.session.UserName = login_Data.username_login;
 		req.session.is_auth = true;
 		res.json({ success: true });
@@ -102,6 +102,17 @@ app.post('/sendForLogin', async (req, res) => {
 		console.error(error);
 		res.json({ success: false, error: error });
 	}
+});
+
+app.post('/logout', (req, res) => {
+	req.session.destroy((err) => {
+		if (err) {
+			console.log(err);
+			return res.json({ success: false });
+		}
+		console.log('Logged out Successfully!');
+		res.json({ success: true });
+	});
 });
 
 app.post('/upload', (req, res) => {
