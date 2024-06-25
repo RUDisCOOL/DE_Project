@@ -13,9 +13,16 @@ const pool = mysql.createPool({
 });
 
 async function togetmail(username) {
-	let sql = `SELECT user_email FROM authentication WHERE user_name = "${username}";`;
-	const email = pool.execute(sql);
-	return email;
+	const sql = `SELECT user_email FROM authentication WHERE user_name = ?;`;
+    return new Promise((resolve, reject) => {
+        pool.execute(sql, [username], (err, result) => {
+            if (err) {
+                reject(err);
+            } else (
+                resolve(result)
+            )
+        });
+    })
 }
 
 async function hashPassword(password) {
