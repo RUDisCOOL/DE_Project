@@ -34,9 +34,10 @@ if (profilePhoto) {
 if (logoutButton) {
 	logoutButton.onclick = async (e) => {
 		e.preventDefault();
-		const result = await fetch('/logout', {
+		const response = await fetch('/logout', {
 			method: 'POST',
 		});
+		const result = await response.json();
 		if (result.success) {
 			window.location.reload();
 		} else {

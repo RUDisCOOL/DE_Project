@@ -12,11 +12,16 @@ router.get('/', (req, res) => {
 		res.render('index', { isAuth: is_auth });
 	}
 });
-
-router.get('/login', (req, res) => {
+function verify(req, res, next) {
+	if (req.session.is_auth) {
+		res.redirect('/');
+	} else {
+		next();
+	}
+}
+router.get('/login', verify, (req, res) => {
 	console.log('Request for login page recieved');
 	res.render('login');
 });
-
 
 module.exports = router;
