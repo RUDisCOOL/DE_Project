@@ -19,7 +19,43 @@ const close = document.querySelector('.toast-close');
 const progress = document.querySelector('.progress');
 const text1 = document.querySelector('.text-1');
 const text2 = document.querySelector('.text-2');
-// const progressBar = document.querySelector(".progress::before");
+
+function showToast(success, messageHead, message) {
+	if (success) {
+		toastIcon.style.backgroundColor = `#0e9700`;
+		toast.style.borderLeft = `8px solid #0e9700`;
+		progress.style.setProperty('--progress-before-bg', '#0e9700');
+		toastIcon.classList.remove('fa-exclamation-triangle');
+		toastIcon.classList.add('fa-check');
+	} else {
+		toastIcon.style.backgroundColor = `#ff3333`;
+		toast.style.borderLeft = `8px solid #ff3333`;
+		progress.style.setProperty('--progress-before-bg', '#ff3333');
+		toastIcon.classList.remove('fa-check');
+		toastIcon.classList.add('fa-exclamation-triangle');
+	}
+	text1.innerHTML = `${messageHead}`;
+	text2.innerHTML = `${message}`;
+	toast.classList.add('active');
+	progress.classList.add('active');
+
+	setTimeout(() => {
+		toast.classList.remove('active');
+	}, 3000);
+
+	setTimeout(() => {
+		progress.classList.remove('active');
+	}, 3300);
+}
+
+close.addEventListener('click', () => {
+	toast.classList.remove('active');
+
+	setTimeout(() => {
+		progress.classList.remove('active');
+	}, 300);
+});
+
 // End Toast
 
 // Profile
@@ -41,24 +77,7 @@ if (logoutButton) {
 		if (result.success) {
 			window.location.reload();
 		} else {
-			toastIcon.style.backgroundColor = `#ff3333`;
-			toast.style.borderLeft = `8px solid #ff3333`;
-			progress.style.setProperty('--progress-before-bg', '#ff3333');
-			toastIcon.classList.remove('fa-check');
-			toastIcon.classList.add('fa-exclamation-triangle');
-			text1.innerHTML = `Error`;
-			text2.innerHTML = `Logout Failed! Please try again!`;
-
-			toast.classList.add('active');
-			progress.classList.add('active');
-
-			setTimeout(() => {
-				toast.classList.remove('active');
-			}, 3000);
-
-			setTimeout(() => {
-				progress.classList.remove('active');
-			}, 3300);
+			showToast(false, 'Error', 'Logout Failed! Please try again!');
 		}
 	};
 }
@@ -66,9 +85,6 @@ if (logoutButton) {
 inputFile.addEventListener('change', uploadImage);
 
 function uploadImage() {
-	// uploadForm.style.display = `flex`;
-	// convertButton.hidden = false;
-	// textAreaDiv.style.display = `flex`;
 	let imgLink = URL.createObjectURL(inputFile.files[0]);
 	imageView.style.backgroundImage = `url(${imgLink})`;
 	imageView.textContent = '';
@@ -117,54 +133,13 @@ contactForm.onsubmit = async (e) => {
 	});
 	const result = await response.json();
 	if (result.success) {
-		toastIcon.style.backgroundColor = `#0e9700`;
-		toast.style.borderLeft = `8px solid #0e9700`;
-		progress.style.setProperty('--progress-before-bg', '#0e9700');
-		toastIcon.classList.remove('fa-exclamation-triangle');
-		toastIcon.classList.add('fa-check');
-		text1.innerHTML = `Success`;
-		text2.innerHTML = `We have received your message successfully!`;
-
-		toast.classList.add('active');
-		progress.classList.add('active');
-
-		setTimeout(() => {
-			toast.classList.remove('active');
-		}, 3000);
-
-		setTimeout(() => {
-			progress.classList.remove('active');
-		}, 3300);
+		showToast(true, 'Success', 'We have received your message successfully!');
 	} else {
-		toastIcon.style.backgroundColor = `#ff3333`;
-		toast.style.borderLeft = `8px solid #ff3333`;
-		progress.style.setProperty('--progress-before-bg', '#ff3333');
-		toastIcon.classList.remove('fa-check');
-		toastIcon.classList.add('fa-exclamation-triangle');
-		text1.innerHTML = `Error`;
-		text2.innerHTML = `Please try sending the message again!`;
-
-		toast.classList.add('active');
-		progress.classList.add('active');
-
-		setTimeout(() => {
-			toast.classList.remove('active');
-		}, 3000);
-
-		setTimeout(() => {
-			progress.classList.remove('active');
-		}, 3300);
+		showToast(false, 'Error', 'Please try sending the message again!');
 	}
 	emailLoadAnimate.hidden = true;
 	sendMail.hidden = false;
 };
-close.addEventListener('click', () => {
-	toast.classList.remove('active');
-
-	setTimeout(() => {
-		progress.classList.remove('active');
-	}, 300);
-});
 
 // JS to improve visual appearance
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
