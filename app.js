@@ -80,7 +80,11 @@ app.post('/sendForSignup', async (req, res) => {
 	let signup_Data = req.body;
 	try {
 		let result = await dbconnect.add_data_for_signup(signup_Data);
+		let email = await dbconnect.togetmail(signup_Data.username_signup);
 		console.log(result);
+		req.session.email = email[0].user_email;
+		req.session.UserName = signup_Data.username_signup;
+		req.session.is_auth = true;
 		res.json({ success: true });
 	} catch (error) {
 		console.error(error);
@@ -92,8 +96,8 @@ app.post('/sendForLogin', async (req, res) => {
 	let login_Data = req.body;
 	try {
 		let result = await dbconnect.add_data_for_login(login_Data);
-		console.log(result);
 		let email = await dbconnect.togetmail(login_Data.username_login);
+		console.log(result);
 		req.session.email = email[0].user_email;
 		req.session.UserName = login_Data.username_login;
 		req.session.is_auth = true;
