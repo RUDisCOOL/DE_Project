@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 router.get('/', (req, res) => {
 	if (req.session.is_auth) {
 		const UserName = req.session.UserName;
-		res.render('index', { UserName: UserName });
+        const email = req.session.email;
+		res.render('index', { UserName: UserName, email: email });
 	} else {
 		res.render('index', { UserName: '' });
 	}
