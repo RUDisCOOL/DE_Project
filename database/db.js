@@ -12,6 +12,19 @@ const pool = mysql.createPool({
 	database: process.env.MYSQL_DATABASE,
 });
 
+async function togetmail(username) {
+	const sql = `SELECT user_email FROM authentication WHERE user_name = ?;`;
+    return new Promise((resolve, reject) => {
+        pool.execute(sql, [username], (err, result) => {
+            if (err) {
+                reject(err);
+            } else (
+                resolve(result)
+            )
+        });
+    })
+}
+
 async function hashPassword(password) {
 	const hashedPassword = await bcrypt.hash(password, 10);
 	return hashedPassword;
@@ -140,4 +153,5 @@ module.exports = {
 	add_data_for_login,
 	tocheckusername,
 	datatosql,
+	togetmail,
 };

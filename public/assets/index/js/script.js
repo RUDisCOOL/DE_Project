@@ -22,6 +22,47 @@ const text2 = document.querySelector('.text-2');
 // const progressBar = document.querySelector(".progress::before");
 // End Toast
 
+// Profile
+const profileMenu = document.querySelector('#profile-drop-down');
+const profilePhoto = document.querySelector('.profile-photo');
+const logoutButton = document.querySelector('#logout');
+if (profilePhoto) {
+	profilePhoto.onclick = async (e) => {
+		profileMenu.classList.toggle('active');
+	};
+}
+if (logoutButton) {
+	logoutButton.onclick = async (e) => {
+		e.preventDefault();
+		const response = await fetch('/logout', {
+			method: 'POST',
+		});
+		const result = await response.json();
+		if (result.success) {
+			window.location.reload();
+		} else {
+			toastIcon.style.backgroundColor = `#ff3333`;
+			toast.style.borderLeft = `8px solid #ff3333`;
+			progress.style.setProperty('--progress-before-bg', '#ff3333');
+			toastIcon.classList.remove('fa-check');
+			toastIcon.classList.add('fa-exclamation-triangle');
+			text1.innerHTML = `Error`;
+			text2.innerHTML = `Logout Failed! Please try again!`;
+
+			toast.classList.add('active');
+			progress.classList.add('active');
+
+			setTimeout(() => {
+				toast.classList.remove('active');
+			}, 3000);
+
+			setTimeout(() => {
+				progress.classList.remove('active');
+			}, 3300);
+		}
+	};
+}
+
 inputFile.addEventListener('change', uploadImage);
 
 function uploadImage() {
@@ -89,11 +130,11 @@ contactForm.onsubmit = async (e) => {
 
 		setTimeout(() => {
 			toast.classList.remove('active');
-		}, 5000);
+		}, 3000);
 
 		setTimeout(() => {
 			progress.classList.remove('active');
-		}, 5300);
+		}, 3300);
 	} else {
 		toastIcon.style.backgroundColor = `#ff3333`;
 		toast.style.borderLeft = `8px solid #ff3333`;
@@ -108,11 +149,11 @@ contactForm.onsubmit = async (e) => {
 
 		setTimeout(() => {
 			toast.classList.remove('active');
-		}, 5000);
+		}, 3000);
 
 		setTimeout(() => {
 			progress.classList.remove('active');
-		}, 5300);
+		}, 3300);
 	}
 	emailLoadAnimate.hidden = true;
 	sendMail.hidden = false;
@@ -140,7 +181,7 @@ function toggleMenu(e) {
 	const icon = document.querySelector('.hamburger-icon');
 	menu.classList.toggle('open');
 	icon.classList.toggle('open');
-	menu.style.width = '50vw';
+	menu.style.width = '200px';
 	menu.style.color = 'black';
 }
 
