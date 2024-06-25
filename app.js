@@ -105,14 +105,9 @@ app.post('/sendForLogin', async (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-	req.session.destroy((err) => {
-		if (err) {
-			console.log(err);
-			return res.json({ success: false });
-		}
-		console.log('Logged out Successfully!');
-		res.json({ success: true });
-	});
+	req.session.is_auth = false;
+	console.log('Logged out Successfully!!!');
+	res.json({ success: true });
 });
 
 app.post('/upload', (req, res) => {

@@ -34,22 +34,13 @@ if (profilePhoto) {
 if (logoutButton) {
 	logoutButton.onclick = async (e) => {
 		e.preventDefault();
-		try {
-			const response = await fetch('/logout', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-			const result = await response.json();
-			if (!result.success) {
-				throw new Error('Logout failed');
-			} else {
-				console.log('Logged out Successfully!');
-				window.location.reload(true);
-			}
-		} catch (error) {
-			console.log('Error:', error);
+		const result = await fetch('/logout', {
+			method: 'POST',
+		});
+		if (result.success) {
+			window.location.reload();
+		} else {
+			console.log('Logout Failed!');
 		}
 	};
 }
