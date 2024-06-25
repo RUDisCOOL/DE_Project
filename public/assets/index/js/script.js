@@ -47,19 +47,18 @@ if (logoutButton) {
 			toastIcon.classList.remove('fa-check');
 			toastIcon.classList.add('fa-exclamation-triangle');
 			text1.innerHTML = `Error`;
-			text2.innerHTML = `Logout Failed!`;
+			text2.innerHTML = `Logout Failed! Please try again!`;
 
 			toast.classList.add('active');
 			progress.classList.add('active');
 
 			setTimeout(() => {
 				toast.classList.remove('active');
-			}, 5000);
+			}, 3000);
 
 			setTimeout(() => {
 				progress.classList.remove('active');
-			}, 5300);
-			console.log('Logout Failed!');
+			}, 3300);
 		}
 	};
 }
@@ -131,11 +130,11 @@ contactForm.onsubmit = async (e) => {
 
 		setTimeout(() => {
 			toast.classList.remove('active');
-		}, 5000);
+		}, 3000);
 
 		setTimeout(() => {
 			progress.classList.remove('active');
-		}, 5300);
+		}, 3300);
 	} else {
 		toastIcon.style.backgroundColor = `#ff3333`;
 		toast.style.borderLeft = `8px solid #ff3333`;
@@ -150,11 +149,11 @@ contactForm.onsubmit = async (e) => {
 
 		setTimeout(() => {
 			toast.classList.remove('active');
-		}, 5000);
+		}, 3000);
 
 		setTimeout(() => {
 			progress.classList.remove('active');
-		}, 5300);
+		}, 3300);
 	}
 	emailLoadAnimate.hidden = true;
 	sendMail.hidden = false;

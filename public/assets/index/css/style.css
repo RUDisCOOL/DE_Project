@@ -264,7 +264,7 @@ a {
 	background-color: var(--progress-before-bg, #0e9700);
 }
 .progress.active::before {
-	animation: progress 5s linear forwards;
+	animation: progress 3s linear forwards;
 }
 @keyframes progress {
 	100% {
