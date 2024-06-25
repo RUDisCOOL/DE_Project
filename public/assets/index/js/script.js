@@ -41,6 +41,24 @@ if (logoutButton) {
 		if (result.success) {
 			window.location.reload();
 		} else {
+			toastIcon.style.backgroundColor = `#ff3333`;
+			toast.style.borderLeft = `8px solid #ff3333`;
+			progress.style.setProperty('--progress-before-bg', '#ff3333');
+			toastIcon.classList.remove('fa-check');
+			toastIcon.classList.add('fa-exclamation-triangle');
+			text1.innerHTML = `Error`;
+			text2.innerHTML = `Logout Failed!`;
+
+			toast.classList.add('active');
+			progress.classList.add('active');
+
+			setTimeout(() => {
+				toast.classList.remove('active');
+			}, 5000);
+
+			setTimeout(() => {
+				progress.classList.remove('active');
+			}, 5300);
 			console.log('Logout Failed!');
 		}
 	};

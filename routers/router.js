@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
 		res.render('index', { isAuth: is_auth });
 	}
 });
+
 function verify(req, res, next) {
 	if (req.session.is_auth) {
 		res.redirect('/');
