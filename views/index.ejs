@@ -25,14 +25,39 @@
 	<body>
 		<nav id="desktop-nav">
 			<div class="logo">ScanTextify</div>
+			<ul class="nav-links">
+				<li><a href="#about">About Us</a></li>
+				<li><a href="#key-features">Key Features</a></li>
+				<li><a href="#contact">Contact Us</a></li>
+			</ul>
+
+			<% if (!isAuth) { %>
+			<div id="log"><a target="_main" href="/login">Login</a></div>
+			<% } else {%>
 			<div>
-				<ul class="nav-links">
-					<li><a href="#about">About Us</a></li>
-					<li><a href="#key-features">Key Features</a></li>
-					<li><a href="#contact">Contact Us</a></li>
-					<li id="log"><a target="_main" href="/login">Login</a></li>
-				</ul>
+				<div class="profile-photo">
+					<i class="fa-solid fa-user" style="font-size: 20px"></i>
+				</div>
+				<div id="profile-drop-down">
+					<ul>
+						<li>
+							<i class="fa-solid fa-user-circle"></i>
+							<%=userName %>
+						</li>
+						<li>
+							<i class="fa-solid fa-envelope"></i>
+							<%=email %>
+						</li>
+					</ul>
+
+					<hr />
+					<div id="logout">
+						<i class="fa-solid fa-sign-out"></i>
+						Logout
+					</div>
+				</div>
 			</div>
+			<%}%>
 		</nav>
 		<nav id="hamburger-nav">
 			<div class="logo">ScanTextify</div>

@@ -25,7 +25,14 @@ a {
 	border-radius: 15px;
 	background-color: #999;
 	color: #eee;
-	transition: all 0.5s cubic-bezier(0.68, -0.35, 0.265, 1.35);
+	transition: all 0.5s cubic-bezier(0.68, -0.35, 0.265, 1.35),
+		box-shadow 0.3s ease, opacity 0.3s ease;
+	opacity: 0.8;
+}
+.copy-button:hover {
+	opacity: 1;
+	cursor: pointer;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 .icon-cpy {
 	display: flex;
@@ -49,6 +56,90 @@ a {
 	right: 0px;
 }
 
+/* Profile Photo */
+.profile-photo {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #999;
+	color: #fff;
+	opacity: 0.7;
+	transition: box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+}
+.profile-photo:hover {
+	opacity: 1;
+	cursor: pointer;
+	box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+/* Profile Drop Down Menu */
+#profile-drop-down {
+	max-height: 0px;
+	overflow: hidden;
+	visibility: hidden;
+	padding: 0px 20px;
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	border-radius: 10px;
+	box-shadow: 0 0 8px rgb(0, 0, 0, 0.3);
+	background-color: #fff;
+	min-width: 200px;
+	right: 25px;
+	z-index: 1;
+	transform: translateY(8px);
+	transition: all 0.5s ease;
+}
+#profile-drop-down.active {
+	visibility: visible;
+	transform: translateY(20px);
+	max-height: 200px;
+	padding: 15px 20px;
+}
+#profile-drop-down ul i {
+	font-size: 24px;
+	margin-right: 6px;
+	font-weight: 600;
+}
+#profile-drop-down ul li {
+	display: flex;
+	align-items: center;
+	padding: 5px;
+	list-style: none;
+	font-size: 16px;
+	font-weight: 600;
+	transition: all 0.2s;
+}
+#profile-drop-down hr {
+	margin: 15px 0px;
+	border: 0 none;
+	background-color: #aaa;
+	height: 2px;
+}
+#logout {
+	align-self: center;
+	width: fit-content;
+	padding: 5px;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: red;
+	font-size: 14px;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+#logout:hover {
+	box-shadow: 0 0 4px rgb(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+#logout i {
+	font-size: 14px;
+	font-weight: 600;
+	margin: 0px 3px;
+}
 /* Loading */
 
 #convert-loading {
@@ -173,7 +264,7 @@ a {
 	background-color: var(--progress-before-bg, #0e9700);
 }
 .progress.active::before {
-	animation: progress 5s linear forwards;
+	animation: progress 3s linear forwards;
 }
 @keyframes progress {
 	100% {
@@ -186,36 +277,50 @@ a {
 nav,
 .nav-links {
 	display: flex;
-	padding: auto;
 }
 
 nav {
 	justify-content: space-around;
 	align-items: center;
-	height: 17vh;
+	height: 120px;
 }
 
 .nav-links {
+	flex: 0.8;
+	justify-content: right;
 	gap: 2rem;
 	list-style: none;
 	font-size: 1.2rem;
 	font-weight: 600;
 }
 
-#log a {
-	padding: 6px 10px;
-	background-color: purple;
-	text-decoration: none;
-	color: white;
-	border-radius: 7px;
-	transition: background-color 0.3s, color 0.3s, padding 0.3s;
+.nav-links li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-#log a:hover {
-	padding: 8px 12px;
-	background-color: purple;
+#log a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	font-weight: 600;
+	text-decoration: none;
 	color: white;
-	border: 2px solid black;
+}
+#log {
+	opacity: 0.9;
+	background-color: purple;
+	border-radius: 7px;
+	height: 36px;
+	width: 72px;
+	transition: all 0.3s ease;
+}
+#log:hover {
+	opacity: 1;
+	box-shadow: 0px 0px 8px rgba(128, 0, 128, 20);
 }
 
 a {
@@ -414,7 +519,7 @@ button {
 	padding: 6px 10px;
 	margin: 20px;
 	color: purple;
-	border: 2px solid black;
+	border: 2px solid purple;
 	background-color: white;
 	transition: background-color 0.3s, color 0.3s;
 	cursor: pointer;
@@ -516,7 +621,7 @@ button:hover {
 }
 
 #contact {
-	padding: 50px 0px;
+	padding: 50px 0px 15px 0px;
 }
 
 .contact-info-upper-container {
@@ -557,5 +662,5 @@ footer p {
 }
 
 footer {
-	padding: 30px;
+	padding: 20px;
 }

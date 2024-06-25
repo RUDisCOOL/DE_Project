@@ -236,10 +236,21 @@ button a {
 		z-index: 1;
 	}
 }
-
+/* error */
 .error {
+	overflow: hidden;
+	visibility: hidden;
+	height: 0px;
 	font-size: 1.4rem;
 	font-weight: 600;
+	opacity: 0;
+	transition: all 0.3s ease;
+}
+.error.after {
+	padding: 5px 0px;
+	height: 30px;
+	visibility: visible;
+	opacity: 1;
 }
 
 /* Toast */
