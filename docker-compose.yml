@@ -1,0 +1,37 @@
+version: "3.8"
+name: ScanTextify
+
+services:
+
+  database:
+    image: mysql:8.0-bookworm
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'project'
+      MYSQL_PASSWORD: 3434
+      MYSQL_ROOT_PASSWORD: 3434
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "--silent"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 5s
+
+  website:
+    build: ./
+    ports:
+      - '5500:5500'
+    env_file:
+      - path: ./.env
+    depends_on:
+      database:
+        condition: service_healthy
+
+volumes:
+    db_data:
