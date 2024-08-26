@@ -1,84 +1,105 @@
 # DE Project
 
-This is our final year Project of our engineering.
+This is our final year project for engineering.
 
-## How to run this project locally in your computer
+## Running the Project Locally
 
-To run this project locally follow the steps below
+There are two ways to run this project locally:
 
-## Step 1
+### 1. Using Docker
 
-1. Install git
-2. Install mysql
-3. Install nodejs
-4. Create a new folder in your computer
+1. Ensure Docker is installed on your computer.
+2. Create a `.env` file in the root of the project directory (details below).
+3. Run the following command from the root of the project:
 
-## Step 2
+   ```
+   sudo docker compose up
+   ```
 
-Clone the repository into you computer
+### 2. Using Node.js
 
-```
-git clone https://github.com/vvaibhavv11/DE_Project.git
-```
+Follow these steps:
 
-cd into the directory
+#### Step 1: Install Required Tools
 
-```
-cd DE_Project
-```
+Ensure the following tools are installed on your computer:
 
-and make sure to change the branch to master
+1. Git
+2. MySQL
+3. Node.js
 
-```
-git checkout master
-```
+#### Step 2: Clone the Repository
 
-## Step 3
+1. Create a new folder on your computer.
+2. Clone the repository into this folder:
 
-Install the necessary dependencies to run the project, Now you can use any package manager you want
+   ```
+   git clone https://github.com/vvaibhavv11/DE_Project.git
+   ```
 
-```
-npm i
-```
+3. Navigate into the project directory:
 
-```
-pnpm i
-```
+   ```
+   cd DE_Project
+   ```
 
-## Step 4
+4. Switch to the `master` branch:
 
-This is the most important step to run the project. It requires the .env file in main folder of the project and the file will contain the credentials of the database and the email-id which will be used to collect the message from the user
+   ```
+   git checkout master
+   ```
 
-```
-MYSQL_HOST=""
-MYSQL_USER=""
-MYSQL_PASSWORD=""
-MYSQL_DATABASE=""
-SENDER_USER=""
-SENDER_PASS=""
-```
+#### Step 3: Install Dependencies
 
-Copy this into .env file and write the credentials of your database and email-id into quotes.
+You can use any package manager to install the necessary dependencies:
 
-1. **MYSQL_HOST** is the ip address of your database
-2. **MYSQL_USER** is the username of your mySQL account
-3. **MYSQL_PASSWORD** means the password for your username
-4. **MYSQL_DATABASE** means the name of your database
-5. **SENDER_USER** means the email-id which will be used to send the email
-6. **SENDER_PASS** is the app-password for your email-id, which can be accessed from your email service provider
+- Using npm:
 
-## Step 5
+   ```
+   npm install
+   ```
 
-Finally you can run the project by the running the command
+- Using pnpm:
 
-```
-npm run dev
-```
+   ```
+   pnpm install
+   ```
 
-or
+#### Step 4: Configure Environment Variables
 
-```
-pnpm dev
-```
+1. Create a `.env` file in the root directory of the project.
+2. Add the following content to the `.env` file, replacing the placeholder values with your actual credentials:
 
-this should start a server in port 5500 make sure the port is open.
+   ```
+   MYSQL_HOST=""
+   MYSQL_USER=""
+   MYSQL_PASSWORD=""
+   MYSQL_DATABASE=""
+   SENDER_USER=""
+   SENDER_PASS=""
+   ```
+
+   - **MYSQL_HOST**: The IP address of your MySQL database.
+   - **MYSQL_USER**: Your MySQL username.
+   - **MYSQL_PASSWORD**: Your MySQL password.
+   - **MYSQL_DATABASE**: The name of your MySQL database.
+   - **SENDER_USER**: The email address used to send messages.
+   - **SENDER_PASS**: The app-specific password for the above email address, which can be generated from your email service provider.
+
+#### Step 5: Run the Project
+
+Start the development server with one of the following commands:
+
+- Using npm:
+
+   ```
+   npm run dev
+   ```
+
+- Using pnpm:
+
+   ```
+   pnpm dev
+   ```
+
+The server should start on port `5500`. Ensure that this port is open on your system.
