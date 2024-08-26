@@ -11,7 +11,7 @@ You can run this project locally using either Docker or Node.js. Follow the inst
    docker compose up
    ```
 
-3. **Note:** You will still need to create a `.env` file before running the project. You can generate the `.env` and `database-docker.env` files by running the provided setup script.
+3. **Note:** You have to generate the `.env` and `database-docker.env` files by running the provided setup [script](#step-4-set-up-environment-files).
 
 ### 2. Running with Node.js
 
@@ -72,9 +72,9 @@ During the setup, you will be prompted to enter:
 
 1. **MySQL Host URL:** You can type `docker` if you're using Docker, otherwise leave it blank to default to `localhost`.
 2. **MySQL Password:** This is required and cannot be left blank.
-3. **Database Name:** You can leave it blank to use the default `yourdatabase`.
+3. **Database Name:** You can leave it blank to use the default `project`.
 
-The script will create the `.env` and `database-docker.env` files with the appropriate values.
+The script will create the `.env` and `database-docker.env` files with the appropriate variable with their values.
 
 #### Step 5: Run the Project
 
