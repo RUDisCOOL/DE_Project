@@ -6,10 +6,12 @@ services:
   database:
     image: mysql:8.0-bookworm
     restart: always
-    environment:
-      MYSQL_DATABASE: 'project'
-      MYSQL_PASSWORD: 3434
-      MYSQL_ROOT_PASSWORD: 3434
+    env_file:
+      - path: ./database-docker.env
+    # environment:
+    #   MYSQL_DATABASE: 'project'
+    #   MYSQL_PASSWORD: 3434
+    #   MYSQL_ROOT_PASSWORD: 3434
     ports:
       - '3306:3306'
     expose:

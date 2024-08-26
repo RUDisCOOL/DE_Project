@@ -1,105 +1,98 @@
-# DE Project
+## How to Run This Project Locally
 
-This is our final year project for engineering.
+You can run this project locally using either Docker or Node.js. Follow the instructions below based on your preferred method.
 
-## Running the Project Locally
+### 1. Running with Docker
 
-There are two ways to run this project locally:
+1. Ensure you have Docker installed on your computer.
+2. From the root directory of the project, run the following command:
 
-### 1. Using Docker
-
-1. Ensure Docker is installed on your computer.
-2. Create a `.env` file in the root of the project directory (details below).
-3. Run the following command from the root of the project:
-
-   ```
-   sudo docker compose up
+   ```bash
+   docker compose up
    ```
 
-### 2. Using Node.js
+3. **Note:** You will still need to create a `.env` file before running the project. You can generate the `.env` and `database-docker.env` files by running the provided setup script.
 
-Follow these steps:
+### 2. Running with Node.js
 
-#### Step 1: Install Required Tools
+Follow the steps below to run the project using Node.js.
 
-Ensure the following tools are installed on your computer:
+#### Step 1: Install Prerequisites
 
-1. Git
-2. MySQL
-3. Node.js
+1. Install Git
+2. Install MySQL
+3. Install Node.js
+4. Create a new folder on your computer for the project.
 
 #### Step 2: Clone the Repository
 
-1. Create a new folder on your computer.
-2. Clone the repository into this folder:
+Clone the repository to your local machine:
 
-   ```
-   git clone https://github.com/vvaibhavv11/DE_Project.git
-   ```
+```
+git clone https://github.com/vvaibhavv11/DE_Project.git
+```
 
-3. Navigate into the project directory:
+Navigate into the project directory:
 
-   ```
-   cd DE_Project
-   ```
+```
+cd DE_Project
+```
 
-4. Switch to the `master` branch:
+Switch to the `master` branch:
 
-   ```
-   git checkout master
-   ```
+```
+git checkout master
+```
 
 #### Step 3: Install Dependencies
 
-You can use any package manager to install the necessary dependencies:
+Install the necessary dependencies using your preferred package manager:
 
-- Using npm:
+```
+npm install
+```
 
-   ```
-   npm install
-   ```
+or
 
-- Using pnpm:
+```
+pnpm install
+```
 
-   ```
-   pnpm install
-   ```
+#### Step 4: Set Up Environment Files
 
-#### Step 4: Configure Environment Variables
+This step is crucial for running the project. The project requires two environment files: `.env` and `database-docker.env`.
 
-1. Create a `.env` file in the root directory of the project.
-2. Add the following content to the `.env` file, replacing the placeholder values with your actual credentials:
+You can generate these files by running the setup script:
 
-   ```
-   MYSQL_HOST=""
-   MYSQL_USER=""
-   MYSQL_PASSWORD=""
-   MYSQL_DATABASE=""
-   SENDER_USER=""
-   SENDER_PASS=""
-   ```
+```
+npm run GenerateEnv
+```
 
-   - **MYSQL_HOST**: The IP address of your MySQL database.
-   - **MYSQL_USER**: Your MySQL username.
-   - **MYSQL_PASSWORD**: Your MySQL password.
-   - **MYSQL_DATABASE**: The name of your MySQL database.
-   - **SENDER_USER**: The email address used to send messages.
-   - **SENDER_PASS**: The app-specific password for the above email address, which can be generated from your email service provider.
+During the setup, you will be prompted to enter:
+
+1. **MySQL Host URL:** You can type `docker` if you're using Docker, otherwise leave it blank to default to `localhost`.
+2. **MySQL Password:** This is required and cannot be left blank.
+3. **Database Name:** You can leave it blank to use the default `yourdatabase`.
+
+The script will create the `.env` and `database-docker.env` files with the appropriate values.
 
 #### Step 5: Run the Project
 
-Start the development server with one of the following commands:
+Finally, start the development server:
 
-- Using npm:
+```
+npm run dev
+```
 
-   ```
-   npm run dev
-   ```
+or
 
-- Using pnpm:
+```
+pnpm dev
+```
 
-   ```
-   pnpm dev
-   ```
+The server should start on port 5500. Make sure this port is open and not in use by another application.
 
-The server should start on port `5500`. Ensure that this port is open on your system.
+### Additional Information
+
+- The default MySQL user is `root`.
+- If you want to use the email service, remember to edit the `.env` file to include your email credentials.
