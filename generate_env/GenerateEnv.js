@@ -1,5 +1,5 @@
 const fs = require('fs');
-const readline = require('readline');
+const readline = require('readline-sync');
 
 const colors = {
     reset: "\x1b[0m",
@@ -15,40 +15,31 @@ const colors = {
     white: "\x1b[37m",
 };
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-function askQuestion(query) {
-    return new Promise((resolve) => rl.question(query, resolve));
-}
-
 async function createEnvFiles() {
     try {
-        console.log(colors.cyan + "leave any field for the default expect password" + colors.reset);
-        let mysqlHost = await askQuestion(colors.yellow + 'Enter the host URL for Docker  (type "database" for Docker): ' + colors.reset);
+        console.log(`${colors.cyan}leave any field for the default expect password${colors.reset}`);
+        let mysqlHost =  readline.question(`${colors.yellow}Enter the host URL for Docker  (type "database" for Docker): ${colors.reset}`);
         if (!mysqlHost) {
             mysqlHost = "localhost";
-            console.log(colors.green + "Default host set to 'localhost'." + colors.reset);
+            console.log(`${colors.green}Default host set to 'localhost'.${colors.reset}`);
         }
         
-        let mysqlPassword = await askQuestion(colors.yellow + 'Enter your MySQL password: ' + colors.reset);
+        let mysqlPassword = readline.question(`${colors.yellow}Enter your MySQL password: ${colors.reset}`, { hideEchoBack: true, mask: "*"});
         if (!mysqlPassword) {
-            console.error(colors.red + "MySQL password is required." + colors.reset);
+            console.error(`${colors.red}MySQL password is required.${colors.reset}`);
             return;
         }
         
-        let mysqlDatabase = await askQuestion(colors.yellow + 'Enter the name of your database: ' + colors.reset);
+        let mysqlDatabase = readline.question(`${colors.yellow}Enter the name of your database(default: project): ${colors.reset}`);
         if (!mysqlDatabase) {
-            console.log(colors.green + "No database name provided, using default value  'project'." + colors.reset);
+            console.log(`${colors.green}No database name provided, using default value 'project'.${colors.reset}`);
             mysqlDatabase = "project";
         }
         
-        let mysqlUsername = await askQuestion(colors.yellow + 'Enter your MySQL username (default: root):' + colors.reset); 
+        let mysqlUsername = readline.question(`${colors.yellow}Enter your MySQL username (default: root):${colors.reset}`); 
         if (!mysqlUsername) {
-            console.log(colors.green + "No username provided, using default value 'root'." + colors.reset);
-            mysqlUser = "root";
+            console.log(`${colors.green}No username provided, using default value 'root'.${colors.reset}`);
+            mysqlUsername = "root";
         }
 
 
@@ -67,25 +58,23 @@ MYSQL_ROOT_PASSWORD="${mysqlPassword}"`.trim();
 
         fs.writeFile('./database-docker.env', databaseDockerEnvContent, (err) => {
             if (err) {
-                console.error(colors.red + 'Error creating the database-docker.env file:' + colors.reset, err);
+                console.error(`${colors.red}Error creating the database-docker.env file:${colors.reset}`, err);
             } else {
-                console.log(colors.green + 'database-docker.env file created successfully!' + colors.reset);
+                console.log(`${colors.green}database-docker.env file created successfully!${colors.reset}`);
             }
         });
 
         fs.writeFile('./.env', generalEnv, (err) => {
             if (err) {
-                console.error(colors.red + 'Error creating the .env file:' + colors.reset, err);
+                console.error(`${colors.red}Error creating the .env file:${colors.reset}`, err);
             } else {
-                console.log(colors.green + '.env file created successfully!' + colors.reset);
+                console.log(`${colors.green}.env file created successfully!${colors.reset}`);
             }
-            rl.close();
         });
-        console.log(colors.blue + "The default user for MySQL is 'root'." + colors.reset);
-        console.log(colors.cyan + "The files are created successfully, but if you want to use the email service, edit the .env accordingly." + colors.reset);
+        console.log(`${colors.cyan}The files are created successfully, but if you want to use the email service, edit the .env accordingly.${colors.reset}`);
+
     } catch (error) {
-        console.error(colors.red + 'An error occurred:' + colors.reset, error);
-        rl.close();
+        console.error(`${colors.red}An error occurred:${colors.reset}`, error);
     }
 }
 
