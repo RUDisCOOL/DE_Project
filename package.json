@@ -5,7 +5,7 @@
 	"main": "script.js",
 	"scripts": {
 		"dev": "node app.js",
-        "GenerateEnv": "node ./generate_env/GenerateEnv.js"
+		"GenerateEnv": "node ./generate_env/GenerateEnv.js"
 	},
 	"keywords": [],
 	"author": "",
@@ -21,6 +21,10 @@
 		"multer": "1.4.5-lts.1",
 		"mysql2": "^3.10.1",
 		"nodemailer": "^6.9.13",
+		"readline-sync": "^1.4.10",
 		"tesseract.js": "^5.1.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.8.3"
 	}
 }

@@ -8,14 +8,6 @@ services:
     restart: always
     env_file:
       - path: ./database-docker.env
-    # environment:
-    #   MYSQL_DATABASE: 'project'
-    #   MYSQL_PASSWORD: 3434
-    #   MYSQL_ROOT_PASSWORD: 3434
-    ports:
-      - '3306:3306'
-    expose:
-      - '3306'
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
@@ -29,6 +21,8 @@ services:
     build: ./
     ports:
       - '5500:5500'
+    expose:
+      - 5500
     env_file:
       - path: ./.env
     depends_on:
