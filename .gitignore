@@ -7,3 +7,5 @@ npm-debug.log
 package-lock.json
 pnpm-lock.yaml
 biome.json
+src-tauri
+app
