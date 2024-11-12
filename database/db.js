@@ -1,29 +1,32 @@
-const express = require('express');
-const app = express();
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
 dotenv.config();
 
-const pool = mysql.createPool({
-	host: process.env.MYSQL_HOST,
-	user: process.env.MYSQL_USER,
-	password: process.env.MYSQL_PASSWORD,
-	database: process.env.MYSQL_DATABASE,
+const pool = new Pool({
+    host: process.env.POSTGRES_HOST,
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DATABASE,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
 
 async function togetmail(username) {
-	const sql = `SELECT user_email FROM authentication WHERE user_name = ?;`;
+    const sql = `SELECT user_email FROM authentication WHERE user_name = $1;`;
+    
     return new Promise((resolve, reject) => {
-        pool.execute(sql, [username], (err, result) => {
+        pool.query(sql, [username], (err, result) => {
             if (err) {
                 reject(err);
-            } else (
-                resolve(result)
-            )
+            } else {
+                resolve(result.rows[0].user_email);
+            }
         });
-    })
+    });
 }
+
 
 async function hashPassword(password) {
 	const hashedPassword = await bcrypt.hash(password, 10);
@@ -36,74 +39,81 @@ async function checkHashPassword(password, hash) {
 }
 
 async function create_table() {
-	pool.query(
-		'CREATE TABLE IF NOT EXISTS authentication(user_name CHAR(50),user_email CHAR(50),user_password CHAR(200),PRIMARY KEY(user_name));'
-	);
+    pool.query(`
+    CREATE TABLE IF NOT EXISTS authentication (
+        user_name VARCHAR(50) PRIMARY KEY,
+        user_email VARCHAR(50),
+        user_password VARCHAR(200)
+    );
+`, (err) => {
+    if (err) {
+        console.error('Error creating table:', err);
+    }
+});
+
 }
 
-function tocheckusername(username) {
-	let checkdata = new Promise((resolve) => {
-		let sql = `SELECT user_name FROM authentication WHERE user_name = "${username}";`;
-		pool.execute(sql, (err, result) => {
-			if (err) {
-				console.log(err);
-			} else {
-				if (result.length > 0) {
-					resolve(true);
-				} else {
-					resolve(false);
-				}
-			}
-		});
-	});
-	return checkdata;
+async function tocheckusername(username) {
+    try {
+        const sql = `SELECT user_name FROM authentication WHERE user_name = $1;`;
+        const result = await pool.query(sql, [username]);
+
+        if (result.rows.length > 0) {
+            return true; 
+        } else {
+            return false; 
+        }
+    } catch (err) {
+        console.error('Error executing query:', err);
+        throw err;
+    }
 }
 
-function tocheckpassword(username, password) {
-	let checkForPassword = new Promise((resolve) => {
-		let sql = `SELECT user_password FROM authentication WHERE user_name = "${username}";`;
-		pool.execute(sql, (err, result) => {
-			if (err) {
-				console.log(err);
-			} else {
-				if (result.length > 0) {
-					let check = checkHashPassword(password, result[0].user_password);
-					resolve(check);
-				} else {
-					resolve(false);
-				}
-			}
-		});
-	});
-	return checkForPassword;
+async function tocheckpassword(username, password) {
+    try {
+        const sql = `SELECT user_password FROM authentication WHERE user_name = $1;`;
+        const result = await pool.query(sql, [username]);
+
+        if (result.rows.length > 0) {
+            const check = checkHashPassword(password, result.rows[0].user_password);
+            return check;
+        } else {
+            return false;
+        }
+    } catch (err) {
+        console.error('Error checking password:', err);
+        throw err; 
+    }
 }
 
 async function datatosql(signup_Data, callback) {
-	let hashedPassword = await hashPassword(signup_Data.password_signup);
-	let sql = `INSERT INTO authentication(user_name,user_email,user_password) 
-    VALUES(?,?,?);`;
-	let check = await tocheckusername(signup_Data.username_signup);
-	if (check === false) {
-		if (signup_Data.password_signup === signup_Data.confirm_password) {
-			pool.execute(
-				sql,
-				[signup_Data.username_signup, signup_Data.email, hashedPassword],
-				(err, result) => {
-					if (err) {
-						console.log(err);
-						callback(err, null);
-					} else {
-						console.log('Data inserted successfully');
-						callback(null, result);
-					}
-				}
-			);
-		} else {
-			callback('Password does not match!', null);
-		}
-	} else {
-		callback('Username already exists!', null);
-	}
+    try {
+        let hashedPassword = await hashPassword(signup_Data.password_signup);
+
+        let check = await tocheckusername(signup_Data.username_signup);
+        if (check === false) {
+            if (signup_Data.password_signup === signup_Data.confirm_password) {
+                const sql = `INSERT INTO authentication(user_name, user_email, user_password) 
+                             VALUES($1, $2, $3);`;
+
+                const result = await pool.query(sql, [
+                    signup_Data.username_signup, 
+                    signup_Data.email, 
+                    hashedPassword
+                ]);
+
+                console.log('Data inserted successfully');
+                callback(null, result); 
+            } else {
+                callback('Password does not match!', null); 
+            }
+        } else {
+            callback('Username already exists!', null); 
+        }
+    } catch (err) {
+        console.log(err);
+        callback(err, null); 
+    }
 }
 
 async function checkDataForLogin(login_Data, callback) {
